@@ -1,0 +1,153 @@
+.container {
+    display: flex;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.col {
+    width: 25%;
+    display: none;
+}
+
+.col-1 {
+    width: 50%;
+}
+
+.col-2 {
+    display: flex;
+    justify-content: end;
+    width: 50%;
+}
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    font-size: 2rem;
+    color: #6610f2;
+    font-weight: 700;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(237, 241, 255);
+    border-image: initial;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+.search-input {
+    display: block;
+    width: 75%;
+    height: 3rem;
+    padding-left: 10px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 2px solid #EDF1FF;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.search-input-append {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    z-index: 3;
+    border: 2px solid #EDF1FF;
+    border-left: 0;
+}
+
+.search-input-icon {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.search-input-icon i {
+    background-color: transparent;
+    color: #6610f2;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    margin-left: 0.25rem;
+    padding: 0 0.5rem;
+    font-weight: 400;
+    background-color: transparent;
+    font-size: 1rem;
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-color: rgb(237, 241, 255) !important;
+    border-image: initial !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    text-decoration: none;
+}
+
+.btn i {
+    background-color: transparent;
+    color: #6610f2;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media (min-width: 992px) {
+    .col {
+        display: block;
+    }
+
+    .col-1 {
+        margin-left: 3rem;
+        width: calc(50% - 3rem);
+    }
+
+    .col-2 {
+        width: 25%;
+    }
+
+    .search-input {
+        width: 90%;
+    }
+
+    .search-input-append {
+        width: 10%
+    }
+}
