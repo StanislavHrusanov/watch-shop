@@ -16,6 +16,15 @@ function Navbar() {
                     </div>
                 </div>
             </div>
+            <nav className={styles["nav"]}>
+                <Link className={styles["nav-link"]}>Начало</Link>
+                <Link className={styles["nav-link"]}>Часовници</Link>
+                <Link className={styles["nav-link"]}>Мъжки</Link>
+                <Link className={styles["nav-link"]}>Дамски</Link>
+                <Link className={styles["nav-link"]}>Регистрация</Link>
+                <Link className={styles["nav-link"]}>Вход</Link>
+                <Link className={styles["nav-link"]}>Изход</Link>
+            </nav>
         </div>
     )
 }
