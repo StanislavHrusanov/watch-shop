@@ -43,6 +43,75 @@ function Home() {
                     <img src="https://www.vip-watches.net/media/attributesplash/cache/729a6e_196x80/orient_mini.png" alt="" />
                 </div>
             </div>
+            <h3>Последните ни предложения</h3>
+            <div className={styles["row-1"]}>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://cdncloudcart.com/16251/products/images/3108/vostok-uss-ssn-571-46mm-energia-automatic-mazki-casovnik-vk61-571c612-image_610e90589946d_800x800.png?1628345727" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>Vostok-Europe SSN-571</h4>
+                        <div className={styles["price-box"]}>
+                            <span>1508 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://cdncloudcart.com/16251/products/images/6541/vostok-europe-48mm-atomic-age-mazki-casovnik-nh34-640c703-657865817bf61_1920x1920.png?1702389168" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>Vostok-Europe Atomic Age Automatic Watch</h4>
+                        <div className={styles["price-box"]}>
+                            <span>1905 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://cdncloudcart.com/16251/products/images/3711/vostok-black-edition-iv-benediktas-vanagas-46mm-mazki-casovnik-vk64-571j431-image_620507c29e21f_1280x1280.png?1644496866" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>Vostok-Europe SSN-571</h4>
+                        <div className={styles["price-box"]}>
+                            <span>1508 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://www.vip-watches.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/o/r/original_52475.jpg" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>Citizen - BJ8050-08E</h4>
+                        <div className={styles["price-box"]}>
+                            <span>759 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://www.vip-watches.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/v/0/v0072-01x.jpg" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>Citizen Promaster - AV0072-01X</h4>
+                        <div className={styles["price-box"]}>
+                            <span>1590 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://www.watchdepot.com.au/cdn/shop/products/30260849-a_700x.jpg?v=1662113838" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>Seiko Prospex SNJ029P 'Arnie' Solar Divers Watch</h4>
+                        <div className={styles["price-box"]}>
+                            <span>1199 лв.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
