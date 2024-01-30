@@ -4,6 +4,7 @@ import './App.css';
 import Tapbar from './components/Tapbar/Tapbar';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Home />} />
 
       </Routes>
+      <Footer />
     </div>
   );
 }
