@@ -52,7 +52,7 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Vostok-Europe SSN-571</h4>
                         <div className={styles["price-box"]}>
-                            <span>1508 лв.</span>
+                            <span>1508.00 лв.</span>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Vostok-Europe Atomic Age Automatic Watch</h4>
                         <div className={styles["price-box"]}>
-                            <span>1905 лв.</span>
+                            <span>1905.00 лв.</span>
                         </div>
                     </div>
                 </div>
@@ -74,18 +74,18 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Vostok-Europe SSN-571</h4>
                         <div className={styles["price-box"]}>
-                            <span>1508 лв.</span>
+                            <span>1508.00 лв.</span>
                         </div>
                     </div>
                 </div>
                 <div className={styles["watch-card"]}>
                     <div className={styles["img-box"]}>
-                        <img src="https://www.vip-watches.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/o/r/original_52475.jpg" alt="" />
+                        <img src="https://cdncloudcart.com/16251/products/images/1227/orient-star-classic-open-heart-41mm-mazki-casovnik-ra-ar0202e-image_5f9003bbaac83_1280x1280.jpeg?1603273883" alt="" />
                     </div>
                     <div className={styles["card-body"]}>
-                        <h4>Citizen - BJ8050-08E</h4>
+                        <h4>ORIENT STAR CLASSIC OPEN HEART 41MM</h4>
                         <div className={styles["price-box"]}>
-                            <span>759 лв.</span>
+                            <span>1083.00 лв.</span>
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Citizen Promaster - AV0072-01X</h4>
                         <div className={styles["price-box"]}>
-                            <span>1590 лв.</span>
+                            <span>1590.00 лв.</span>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Seiko Prospex SNJ029P 'Arnie' Solar Divers Watch</h4>
                         <div className={styles["price-box"]}>
-                            <span>1199 лв.</span>
+                            <span>1199.00 лв.</span>
                         </div>
                     </div>
                 </div>

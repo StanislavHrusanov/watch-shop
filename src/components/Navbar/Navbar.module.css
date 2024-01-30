@@ -14,7 +14,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin: 0 0 1rem;
+    background-color: #fd4f0c;
 }
 
 .col {
@@ -32,12 +32,9 @@
     justify-content: center;
     height: 3rem;
     font-size: 1.75rem;
-    color: #6610f2;
+    color: #343a40;
+    background-color: #fd4f0c;
     font-weight: 700;
-    border-width: 2px;
-    border-style: solid;
-    border-color: rgb(237, 241, 255);
-    border-image: initial;
 }
 
 .col-1 {
@@ -55,12 +52,8 @@
     padding: 0 0.9rem;
     font-weight: 400;
     background-color: transparent;
-    color: #6c757d;
+    color: #343a40;
     font-size: 1.5rem;
-    border-width: 2px !important;
-    border-style: solid !important;
-    border-color: rgb(237, 241, 255) !important;
-    border-image: initial !important;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     text-decoration: none;
 }
@@ -71,12 +64,13 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    background-color: #fd4f0c;
 }
 
 .nav-link {
-    margin: 0.5rem 0 0 0;
+    padding: 0.25rem;
     font-size: 1.25rem;
-    color: #6c757d;
+    color: #343a40;
     cursor: pointer;
     text-decoration: none;
 }
@@ -92,12 +86,12 @@
 
     .nav {
         flex-direction: row;
-        border: 2px solid #EDF1FF;
         height: 3rem;
     }
 
     .nav-link {
-        margin: 0 2rem;
+        padding: 0 2rem;
+        font-weight: 600;
     }
 }
 
@@ -107,6 +101,6 @@
     }
 
     .nav-link {
-        margin: 0 3rem;
+        padding: 0 3rem;
     }
 }
