@@ -52,7 +52,7 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Vostok-Europe SSN-571</h4>
                         <div className={styles["price-box"]}>
-                            <span>1508.00 лв.</span>
+                            <span className={styles["reg-price"]}>1508.00 лв.</span>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,8 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Vostok-Europe Atomic Age Automatic Watch</h4>
                         <div className={styles["price-box"]}>
-                            <span>1905.00 лв.</span>
+                            <span className={styles["old-price"]}>1905.00 лв.</span>
+                            <span className={styles["new-price"]}>1850.00 лв.</span>
                         </div>
                     </div>
                 </div>
@@ -74,7 +75,7 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Vostok-Europe SSN-571</h4>
                         <div className={styles["price-box"]}>
-                            <span>1508.00 лв.</span>
+                            <span className={styles["reg-price"]}>1508.00 лв.</span>
                         </div>
                     </div>
                 </div>
@@ -85,7 +86,7 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>ORIENT STAR CLASSIC OPEN HEART 41MM</h4>
                         <div className={styles["price-box"]}>
-                            <span>1083.00 лв.</span>
+                            <span className={styles["reg-price"]}>1083.00 лв.</span>
                         </div>
                     </div>
                 </div>
@@ -96,7 +97,8 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Citizen Promaster - AV0072-01X</h4>
                         <div className={styles["price-box"]}>
-                            <span>1590.00 лв.</span>
+                            <span className={styles["old-price"]}>1650 лв.</span>
+                            <span className={styles["new-price"]}>1590 лв.</span>
                         </div>
                     </div>
                 </div>
@@ -107,7 +109,8 @@ function Home() {
                     <div className={styles["card-body"]}>
                         <h4>Seiko Prospex SNJ029P 'Arnie' Solar Divers Watch</h4>
                         <div className={styles["price-box"]}>
-                            <span>1199.00 лв.</span>
+                            <span className={styles["old-price"]}>1199.00 лв.</span>
+                            <span className={styles["new-price"]}>1099.00 лв.</span>
                         </div>
                     </div>
                 </div>

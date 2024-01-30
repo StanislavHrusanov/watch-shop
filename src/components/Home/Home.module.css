@@ -96,9 +96,24 @@
 
 .price-box {
     margin: 0.5rem;
+    /* min-height: 35px; */
     font-weight: 600;
+}
+
+.reg-price{
+    color: #333;
+}
+
+.old-price{
+    display: inline-block;
+    color: #333;
+    text-decoration: line-through;
+    margin: 0 7px 3px;
+}
+
+.new-price{
+    display: inline-block;
     color: #e65f29;
-    ;
 }
 
 @media (min-width: 768px) {
