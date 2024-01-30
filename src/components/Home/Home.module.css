@@ -10,6 +10,7 @@
 }
 
 .container h3 {
+    text-align: left;
     /* padding-left: 2px; */
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
@@ -30,7 +31,7 @@
     align-items: center;
     justify-content: start;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .row-1 {
@@ -89,7 +90,7 @@
     margin: 0.5rem;
     min-height: 48px;
     max-height: 48px;
-    overflow: hidden;;
+    overflow: hidden;
     font-weight: 600;
     color: #333;
 }
@@ -100,18 +101,20 @@
     font-weight: 600;
 }
 
-.reg-price{
+.reg-price {
+    display: inline-block;
+    margin-bottom: 3px;
     color: #333;
 }
 
-.old-price{
+.old-price {
     display: inline-block;
     color: #333;
     text-decoration: line-through;
     margin: 0 7px 3px;
 }
 
-.new-price{
+.new-price {
     display: inline-block;
     color: #e65f29;
 }

@@ -65,8 +65,7 @@
     color: #495057;
     background-color: #e3e3e3;
     background-clip: padding-box;
-    border: 1px solid #fd4f0c;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border: 0;
 }
 
 .search-input-append {
