@@ -35,6 +35,8 @@
     color: #343a40;
     background-color: #fd4f0c;
     font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0.5px 0.5px 0.5px black;
 }
 
 .col-1 {

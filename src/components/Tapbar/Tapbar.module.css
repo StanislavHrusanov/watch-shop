@@ -44,6 +44,7 @@
     color: #343a40;
     background-color: #fd4f0c;
     font-weight: 700;
+    text-shadow: 0.5px 0.5px 0.5px black;
 }
 
 .search {
@@ -111,6 +112,7 @@
 .btn i {
     background-color: transparent;
     color: #fd4f0c;
+    text-shadow: 0.5px 0.5px 0.5px black;
 }
 
 .badge {
