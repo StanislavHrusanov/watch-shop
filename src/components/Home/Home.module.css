@@ -86,6 +86,12 @@
     background-color: #cfd9e3;
 }
 
+.brand-box:hover {
+    transform: scale(1.1);
+    transition: .3s;
+    background-color: #fd4f0c;
+}
+
 .watch-card {
     display: flex;
     flex-direction: column;
