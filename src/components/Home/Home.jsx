@@ -195,6 +195,85 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <h3>Лазерно гравиране</h3>
+            <p> Гравирането е услуга, с помощта на която да превърнем вашият часовник в нещо наистина специално и лично. Напоследък гравирането се превръща в традиция, набираща все по-голяма популярност.
+                Датиращ от древни векове, този метод е използван като израз на висша почит, специално отношение и внимание, отправени към важен човек в живота на някой. </p>
+            <div className={styles["row-banner"]}>
+                <img className={styles["graving-banner"]} src="https://res.cloudinary.com/doyfjnyvo/image/upload/v1706701873/watches/laserEngraving_p1jubz.webp" alt="" />
+                <p>Виж повече</p>
+            </div>
+            <h3>Последните ни предложения</h3>
+            <div className={styles["row-cards"]}>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://www.vip-watches.net/media/catalog/product/cache/1/small_image/280x280/9df78eab33525d08d6e5fb8d27136e95/t/h/thumb11_she-4554gm-9audf.jpg" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>Casio Sheen - SHE-4554GM-9AUEF</h4>
+                        <div className={styles["price-box"]}>
+                            <span className={styles["reg-price"]}>290 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://timer.bg/image/cachewebp/catalog/products/176545/4/ES5323-600x600.webp" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>FOSSIL ES5323</h4>
+                        <div className={styles["price-box"]}>
+                            <span className={styles["old-price"]}>490 лв.</span>
+                            <span className={styles["new-price"]}>450 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://timer.bg/image/cachewebp/catalog/products/176545/6/AV0072-01X-600x600.webp" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>CITIZEN AV0072-01X</h4>
+                        <div className={styles["price-box"]}>
+                            <span className={styles["reg-price"]}>1680 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://cdncloudcart.com/16251/products/images/3967/tissot-tradition-42mm-mazki-casovnik-t063-617-36-037-00-629b4ff00b88d_600x600.jpeg?1654345744" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>TISSOT TRADITION 42ММ T063.617.36.037.00</h4>
+                        <div className={styles["price-box"]}>
+                            <span className={styles["reg-price"]}>1190 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://cdncloudcart.com/16251/products/images/4548/casio-g-shock-mazki-casovnik-gd-400gb-1b2er-634555b46c54f_600x600.jpeg?1665488378" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>CASIO G-SHOCK МЪЖКИ ЧАСОВНИК GD-400GB-1B2ER</h4>
+                        <div className={styles["price-box"]}>
+                            <span className={styles["old-price"]}>299 лв.</span>
+                            <span className={styles["new-price"]}>269 лв.</span>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles["watch-card"]}>
+                    <div className={styles["img-box"]}>
+                        <img src="https://cdncloudcart.com/16251/products/images/1227/orient-star-classic-open-heart-41mm-mazki-casovnik-ra-ar0202e-image_5f9003bbaac83_600x600.jpeg?1603273883" alt="" />
+                    </div>
+                    <div className={styles["card-body"]}>
+                        <h4>ORIENT STAR CLASSIC OPEN HEART 41MM RA-AR0202E</h4>
+                        <div className={styles["price-box"]}>
+                            <span className={styles["old-price"]}>1199 лв.</span>
+                            <span className={styles["new-price"]}>1099 лв.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
