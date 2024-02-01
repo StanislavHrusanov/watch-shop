@@ -163,6 +163,7 @@ table {
 
 .row-similar-watches {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     width: 100%;
     margin: 0 0 1rem;
@@ -242,7 +243,7 @@ table {
     }
 
     .watch-card {
-        width: 50%;
+        width: calc(50% - 0.5rem);
     }
 }
 
@@ -264,12 +265,12 @@ table {
 
 @media (min-width: 992px) {
     .watch-card {
-        width: 33.3334%;
+        width: calc(33.3334% - 0.67rem);
     }
 }
 
 @media (min-width: 1200px) {
     .watch-card {
-        width: 25%;
+        width: calc(25% - 0.75rem);
     }
 }
