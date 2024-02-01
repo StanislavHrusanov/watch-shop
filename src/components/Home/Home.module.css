@@ -24,6 +24,8 @@
     margin-bottom: 0.5rem;
     color: #e65f29;
     line-height: 1.2;
+    text-shadow: 0.5px 0.5px 0.5px black;
+
 }
 
 .row-banner {
@@ -34,6 +36,9 @@
     width: 100%;
     position: relative;
     margin-bottom: 2rem;
+    -webkit-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
 }
 
 .first-banner {
@@ -55,7 +60,7 @@
     right: 10px;
     font-size: 1.1rem;
     font-weight: 600;
-    text-shadow: 0.5px 0.5px 0.5px black;   
+    text-shadow: 0.5px 0.5px 0.5px black;
     background-color: #383d3d;
     color: #fd4f0c;
     cursor: pointer;
@@ -86,6 +91,9 @@
     width: calc(50% - 2px);
     margin: 1px;
     background-color: #cfd9e3;
+    -webkit-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
 }
 
 .brand-box:hover {
@@ -103,6 +111,9 @@
     width: calc(50% - 4px);
     background-color: #cfd9e3;
     cursor: pointer;
+    -webkit-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
     /* border: 2px solid rgb(237, 241, 255); */
 }
 
