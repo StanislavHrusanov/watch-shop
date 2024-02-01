@@ -93,7 +93,7 @@
 .desc-table {
     display: flex;
     width: calc(100% - 2rem);
-    margin: 0 1rem 1rem;
+    margin: 0 1rem;
 
 }
 
@@ -119,13 +119,43 @@ table {
     vertical-align: middle;
 }
 
+.watch-desc-row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.watch-desc-row h4 {
+    text-align: left;
+    margin: 0 1rem 0.25rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.paragraph-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.paragraph-box p {
+    margin: 0.5rem 1rem 0.5rem;
+    font-size: 1.1rem;
+    line-height: 1.25;
+    text-align: left;
+    color: #333;
+}
+
 @media (min-width: 768px) {
     .row-img-buy {
         flex-direction: row;
     }
 
     .col-img {
-        width: 40%;
+        margin: 1rem 0 0 1rem;
+        width: calc(40% - 1rem);
     }
 
     .col-buy {
