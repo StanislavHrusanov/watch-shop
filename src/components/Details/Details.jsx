@@ -20,6 +20,53 @@ function Details() {
                             <i className="fas fa-heart text-primary"></i>
                         </div>
                     </div>
+                    <h4>Технически характеристики</h4>
+                    <div className={styles["desc-table"]}>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Марка</td>
+                                    <td>Vostok-Europe</td>
+                                </tr>
+                                <tr>
+                                    <td>Модел</td>
+                                    <td>Lunokhod 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Тип</td>
+                                    <td>Мъжки</td>
+                                </tr>
+                                <tr>
+                                    <td>Механизъм</td>
+                                    <td>Кварцов</td>
+                                </tr>
+                                <tr>
+                                    <td>Стъкло</td>
+                                    <td>К1- закалено кристално стъкло с дебелина 3,5 мм</td>
+                                </tr>
+                                <tr>
+                                    <td>Водоустойчивост</td>
+                                    <td>20АТМ</td>
+                                </tr>
+                                <tr>
+                                    <td>Диаметър</td>
+                                    <td>48мм</td>
+                                </tr>
+                                <tr>
+                                    <td>Материал корпус</td>
+                                    <td>Благородна стомана с черно PVD покритие</td>
+                                </tr>
+                                <tr>
+                                    <td>Материал верижка</td>
+                                    <td>Силикон</td>
+                                </tr>
+                                <tr>
+                                    <td>Гаранция</td>
+                                    <td>5 години</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
