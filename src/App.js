@@ -6,19 +6,22 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Footer from './components/Footer/Footer';
 import Details from './components/Details/Details';
+import WatchCatalog from './components/WatchCatalog/WatchCatalog';
 
 function App() {
   return (
     <div className="App">
       <Tapbar />
       <Navbar />
+      <div className="container">
 
-      <Routes>
+        <Routes>
 
-        <Route path='/' element={<Home />} />
-        <Route path='/details' element={<Details />} />
-
-      </Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/details' element={<Details />} />
+          <Route path='/watches' element={<WatchCatalog />} />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );
