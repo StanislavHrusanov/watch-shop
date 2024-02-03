@@ -1,4 +1,4 @@
-import styles from "./Auth.module.css";
+import styles from "./Form.module.css";
 
 function Register() {
     return (
