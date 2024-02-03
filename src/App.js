@@ -9,6 +9,7 @@ import Details from './components/Details/Details';
 import WatchCatalog from './components/WatchCatalog/WatchCatalog';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
+import AddWatch from './components/AddWatch/AddWatch';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/watches' element={<WatchCatalog />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/addWatch' element={<AddWatch />} />
         </Routes>
       </div>
       <Footer />
