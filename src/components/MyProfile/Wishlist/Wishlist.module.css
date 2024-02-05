@@ -1,0 +1,165 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 3rem;
+}
+
+.container h3 {
+    margin: 0 0 1.5rem;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fd4f0c;
+    text-shadow: 0.5px 0.5px 0.5px black;
+}
+
+.row-cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 0 1rem;
+}
+
+.watch-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 0 1rem;
+    background-color: #cfd9e3;
+    cursor: pointer;
+    -webkit-box-shadow: 5px 10px 10px -1px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 5px 10px 10px -1px rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 10px 10px -1px rgba(0, 0, 0, 0.7);
+    /* border: 2px solid rgb(237, 241, 255); */
+}
+
+.watch-card:hover {
+    transform: scale(1.1);
+    transition: .3s;
+}
+
+.img-box {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+}
+
+.img-box img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+
+.card-body {
+    width: 100%;
+    /* border-top: 1px solid rgba(0, 0, 0, 0.125); */
+}
+
+.card-body h4 {
+    margin: 0.5rem;
+    min-height: 32px;
+    max-height: 32px;
+    overflow: hidden;
+    font-weight: 600;
+    color: #333;
+}
+
+.reg-price {
+    display: inline-block;
+    margin-bottom: 3px;
+    font-weight: 600;
+    color: #333;
+}
+
+.old-price {
+    display: inline-block;
+    color: #333;
+    font-weight: 600;
+    text-decoration: line-through;
+    margin: 0 7px 3px;
+}
+
+.new-price {
+    display: inline-block;
+    font-weight: 600;
+    color: #e65f29;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pages div {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fd4f0c;
+    padding: 8px 16px;
+    text-decoration: underline;
+}
+
+.prev,
+.next {
+    margin: 1rem;
+    padding: 0.5rem 2.5rem;
+    background-color: #fd4f0c;
+    border: none;
+    cursor: pointer;
+}
+
+.prev i,
+.next i {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.remove-btn {
+    position: relative;
+    top: 5px;
+    right: 5px;
+}
+
+.remove-btn i {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.remove-btn i:hover {
+    color: #fd4f0c;
+    transition: .2s;
+}
+
+@media (min-width: 600px) {
+    .row-cards {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .watch-card {
+        width: calc(50% - 0.5rem);
+    }
+}
+
+@media (min-width: 992px) {
+    .watch-card {
+        width: calc(33.3334% - 0.67rem);
+    }
+}
+
+@media (min-width: 1200px) {
+    .watch-card {
+        width: calc(25% - 0.75rem);
+    }
+}
