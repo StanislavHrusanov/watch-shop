@@ -25,6 +25,9 @@ function Edit() {
                         <input type="text" name="price" id="price" placeholder="Цена" />
                     </div>
                     <div className={styles["input"]}>
+                        <input type="text" name="newPrice" id="newPrice" placeholder="Нова цена" />
+                    </div>
+                    <div className={styles["input"]}>
                         <input type="text" name="type" id="type" placeholder="Тип (мъжки/дамски)" />
                     </div>
                     <div className={styles["input"]}>
