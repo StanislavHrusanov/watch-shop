@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import './App.css';
+import styles from "./App.module.css";
 import Tapbar from './components/Tapbar/Tapbar';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
@@ -10,13 +10,14 @@ import WatchCatalog from './components/WatchCatalog/WatchCatalog';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import AddWatch from './components/AddWatch/AddWatch';
+import Wishlist from './components/MyProfile/Wishlist/Wishlist';
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles["app"]}>
       <Tapbar />
       <Navbar />
-      <div className="container">
+      <div className={styles["container"]}>
 
         <Routes>
 
@@ -26,6 +27,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/addWatch' element={<AddWatch />} />
+          <Route path='/wishlist' element={<Wishlist />} />
         </Routes>
       </div>
       <Footer />
