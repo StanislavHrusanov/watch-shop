@@ -11,6 +11,7 @@ import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import AddWatch from './components/AddWatch/AddWatch';
 import Wishlist from './components/MyProfile/Wishlist/Wishlist';
+import MyOrders from './components/MyProfile/MyOrders/MyOrders';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/addWatch' element={<AddWatch />} />
           <Route path='/wishlist' element={<Wishlist />} />
+          <Route path='/myOrders' element={<MyOrders />} />
         </Routes>
       </div>
       <Footer />
