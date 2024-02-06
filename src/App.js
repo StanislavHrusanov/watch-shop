@@ -14,6 +14,7 @@ import Wishlist from './components/MyProfile/Wishlist/Wishlist';
 import MyOrders from './components/MyProfile/MyOrders/MyOrders';
 import Cart from './components/Cart/Cart';
 import Purchase from './components/Cart/Purchase/Purchase';
+import Purchases from './components/AdminProfile/Purchases';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
           <Route path='/myOrders' element={<MyOrders />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/purchase' element={<Purchase />} />
+          <Route path='/purchases' element={<Purchases />} />
+
         </Routes>
       </div>
       <Footer />
