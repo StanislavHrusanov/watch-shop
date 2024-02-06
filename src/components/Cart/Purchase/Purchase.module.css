@@ -1,0 +1,139 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 3rem;
+}
+
+.container h3 {
+    margin: 0 0 1.5rem;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fd4f0c;
+    text-shadow: 0.5px 0.5px 0.5px black;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    background-color: #cfd9e3;
+    width: 100%;
+}
+
+.col h4 {
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: #333;
+    color: #cfd9e3;
+}
+
+.delivery-info,
+.delivery-info-no-user,
+.pay-method,
+.confirm-and-pay {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+
+.delivery-info-no-user h4 {
+    margin-bottom: 1.5rem;
+}
+
+.delivery-info p {
+    margin-bottom: 0.5rem;
+    padding: 0 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+}
+
+.input input {
+    width: 250px;
+    height: 30px;
+    border: 1px solid #333;
+}
+
+.method-type {
+    margin-bottom: 0.25rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    text-align: left;
+}
+
+.pay-method p {
+    padding: 0 0.5rem;
+}
+
+.method-info {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: left;
+}
+
+.items-value-box,
+.delivery-box,
+.total-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.items-value-box,
+.delivery-box,
+.total-box p {
+    padding: 0 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.items-value-box span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.delivery-box span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #33cc33;
+}
+
+.total-box span {
+    padding-right: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fd4f0c;
+}
+
+.confirm-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 1rem);
+    margin: 0 0.5rem 0.5rem;
+    padding: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    background-color: #fd4f0c;
+    color: #333;
+    cursor: pointer;
+}
