@@ -11,11 +11,11 @@ async function request(method, url, data) {
         options.body = JSON.stringify(data);
     }
 
-    const user = JSON.parse(localStorage.getItem('user'));
+    // const user = JSON.parse(localStorage.getItem('user'));
 
-    if (user) {
-        options.headers['X-Authorization'] = user.accessToken;
-    }
+    // if (user) {
+    //     options.headers['X-Authorization'] = user.accessToken;
+    // }
 
     try {
         const res = await fetch(host + url, options);
@@ -35,7 +35,7 @@ async function request(method, url, data) {
         // }
 
     } catch (error) {
-        // window.alert(error.message);
+        window.alert(error.message);
         throw error;
     }
 }
