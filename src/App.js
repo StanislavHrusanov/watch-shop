@@ -16,30 +16,34 @@ import Cart from './components/Cart/Cart';
 import Purchase from './components/Cart/Purchase/Purchase';
 import Purchases from './components/AdminProfile/Purchases';
 
+import { LoadingProvider } from './contexts/LoadingContext';
+
 function App() {
   return (
     <div className={styles["app"]}>
-      <Tapbar />
-      <Navbar />
-      <div className={styles["container"]}>
+      <LoadingProvider>
+        <Tapbar />
+        <Navbar />
+        <div className={styles["container"]}>
 
-        <Routes>
+          <Routes>
 
-          <Route path='/' element={<Home />} />
-          <Route path='/details' element={<Details />} />
-          <Route path='/watches' element={<WatchCatalog />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/addWatch' element={<AddWatch />} />
-          <Route path='/wishlist' element={<Wishlist />} />
-          <Route path='/myOrders' element={<MyOrders />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/purchase' element={<Purchase />} />
-          <Route path='/purchases' element={<Purchases />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/details' element={<Details />} />
+            <Route path='/watches' element={<WatchCatalog />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/addWatch' element={<AddWatch />} />
+            <Route path='/wishlist' element={<Wishlist />} />
+            <Route path='/myOrders' element={<MyOrders />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/purchase' element={<Purchase />} />
+            <Route path='/purchases' element={<Purchases />} />
 
-        </Routes>
-      </div>
-      <Footer />
+          </Routes>
+        </div>
+        <Footer />
+      </LoadingProvider>
     </div>
   );
 }
