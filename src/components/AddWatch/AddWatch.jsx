@@ -19,9 +19,6 @@ function AddWatch() {
                         <input type="text" name="imageUrl" id="imageUrl" placeholder="Линк към снимка" />
                     </div>
                     <div className={styles["input"]}>
-                        <input type="text" name="description" id="description" placeholder="Описание" />
-                    </div>
-                    <div className={styles["input"]}>
                         <input type="text" name="price" id="price" placeholder="Цена" />
                     </div>
                     <div className={styles["input"]}>
@@ -50,6 +47,9 @@ function AddWatch() {
                     </div>
                     <div className={styles["input"]}>
                         <input type="number" name="quantity" id="quantity" placeholder="Бройки" />
+                    </div>
+                    <div className={styles["input"]}>
+                        <textarea type="text" name="description" id="description" placeholder="Описание" />
                     </div>
                     <div className={styles["action"]}>
                         <input type="submit" value="Добави"></input>
