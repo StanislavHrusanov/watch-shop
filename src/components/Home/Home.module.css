@@ -97,6 +97,7 @@
     width: calc(50% - 2px);
     margin: 1px;
     background-color: #cfd9e3;
+    cursor: pointer;
     -webkit-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
     -moz-box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
     box-shadow: 5px 5px 10px -1px rgba(0, 0, 0, 0.7);
