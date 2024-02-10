@@ -5,7 +5,9 @@ const endpoints = {
     getAll: '/watches',
     getBrandsLogo: '/watches/brandsLogo',
     getAllPaginated: (page, limit) => `/watches/paginated?page=${page}&limit=${limit}`,
-    getWatchesCount: '/watches/count'
+    getWatchesCount: '/watches/count',
+    getWatchesByTypePaginated: (type, page, limit) => `/watches/types/${type}?page=${page}&limit=${limit}`,
+    getWatchesByTypeCount: (type) => `/watches/count/types/${type}`
 };
 
 export const addWatch = (data) => api.post(endpoints.addWatch, data);
@@ -17,3 +19,7 @@ export const getBrandsLogo = () => api.get(endpoints.getBrandsLogo);
 export const getAllPaginated = (page, limit) => api.get(endpoints.getAllPaginated(page, limit));
 
 export const getWatchesCount = () => api.get(endpoints.getWatchesCount);
+
+export const getWatchesByTypePaginated = (type, page, limit) => api.get(endpoints.getWatchesByTypePaginated(type, page, limit));
+
+export const getWatchesByTypeCount = (type) => api.get(endpoints.getWatchesByTypeCount(type));

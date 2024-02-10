@@ -17,10 +17,10 @@ function Navbar() {
                 </div>
             </div>
             <nav className={styles["nav"]}>
-                <Link className={styles["nav-link"]}>Начало</Link>
-                <Link className={styles["nav-link"]}>Часовници</Link>
-                <Link className={styles["nav-link"]}>Мъжки</Link>
-                <Link className={styles["nav-link"]}>Дамски</Link>
+                <Link className={styles["nav-link"]} to="/">Начало</Link>
+                <Link className={styles["nav-link"]} to="/watches">Часовници</Link>
+                <Link className={styles["nav-link"]} to="/watches/Мъжки">Мъжки</Link>
+                <Link className={styles["nav-link"]} to="/watches/Дамски">Дамски</Link>
                 <Link className={styles["nav-link"]}>Регистрация</Link>
                 <Link className={styles["nav-link"]}>Вход</Link>
                 <Link className={styles["nav-link"]}>Изход</Link>
