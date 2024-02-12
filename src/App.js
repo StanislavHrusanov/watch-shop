@@ -19,6 +19,7 @@ import WatchCatalogType from './components/WatchCatalog/WatchCatalogType/WatchCa
 
 import { LoadingProvider } from './contexts/LoadingContext';
 import { PageProvider } from './contexts/PageContext';
+import WatchCatalogBrand from './components/WatchCatalog/WatchCatalogBrand/WatchCatalogBrand';
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/details' element={<Details />} />
               <Route path='/watches' element={<WatchCatalog />} />
-              <Route path='/watches/:type' element={<WatchCatalogType />} />
+              <Route path='/watches/types/:type' element={<WatchCatalogType />} />
+              <Route path='/watches/brands/:brand' element={<WatchCatalogBrand />} />
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />} />
               <Route path='/addWatch' element={<AddWatch />} />

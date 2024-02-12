@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoadingContext } from "../../contexts/LoadingContext";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import WatchCard from "./WatchCard/WatchCard";
@@ -66,9 +66,9 @@ function Home() {
                 <div className={styles["row-brands"]}>
                     {
                         brandsLogo.map(x =>
-                            <div key={x._id} className={styles["brand-box"]}>
+                            <Link key={x._id} className={styles["brand-box"]} to={`/watches/brands/${x.brand}`}>
                                 <img src={x.imageUrl} alt="" />
-                            </div>)
+                            </Link>)
                     }
 
                 </div>
