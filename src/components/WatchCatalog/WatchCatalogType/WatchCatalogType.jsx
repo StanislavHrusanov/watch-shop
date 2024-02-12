@@ -13,6 +13,7 @@ function WatchCatalogType() {
     const [page, setPage] = useState(1);
     const [limit] = useState(4);
     const [pages, setPages] = useState(1);
+    const [sortCriteria, setSortCriteria] = useState('newest');
     const { type } = useParams();
 
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
@@ -23,13 +24,20 @@ function WatchCatalogType() {
         (async () => {
             try {
                 showLoading();
-                const allWatches = await watchService.getWatchesByTypePaginated(type, page, limit);
-                const allWatchesCount = await watchService.getWatchesByTypeCount(type);
+                const allWatches = await watchService.getAllPaginated(type, sortCriteria, page, limit);
+                const allWatchesCount = await watchService.getWatchesCount(type, 'all');
                 setWatches(allWatches);
                 setWatchCount(allWatchesCount);
                 setPages(Math.ceil(watchCount / limit));
-                setPage(state => type === watchType ? state : 1);
-                setWatchType(state => state = type);
+                // setPage(state => type === watchType ? state : 1);
+                setPage((state) => {
+                    if (type !== watchType) {
+                        setSortCriteria('newest');
+                        return 1;
+                    }
+                    return state;
+                });
+                setWatchType(type);
                 hideLoading();
 
             } catch (error) {
@@ -38,7 +46,11 @@ function WatchCatalogType() {
                 navigate('/watches');
             }
         })();
-    }, [showLoading, hideLoading, navigate, type, page, limit, watchCount, watchType, setWatchType]);
+    }, [showLoading, hideLoading, navigate, type, page, limit, watchCount, watchType, setWatchType, sortCriteria]);
+
+    const onSort = (criteria) => {
+        setSortCriteria(criteria)
+    }
 
     const prevPage = () => {
         if (page > 1) {
@@ -58,7 +70,7 @@ function WatchCatalogType() {
         )
         : (
             <div className={styles["container"]}>
-                <h3>{type} часовници</h3>
+                <h3>{type === 'men' ? 'Мъжки' : 'Дамски'} часовници</h3>
                 <div className={styles["row-sort-filter"]}>
                     <div className={styles["filter"]}>
                         <p>Тип:</p>
@@ -70,9 +82,14 @@ function WatchCatalogType() {
                     </div>
                     <div className={styles["sort"]}>
                         <p>Сортирай по:</p>
-                        <select name="" id="">
-                            <option value="Цена">Цена</option>
-                            <option value="Мъжки">Най-нови</option>
+                        <select
+                            onChange={(e) => onSort(e.target.value)}
+                            value={sortCriteria}
+                        >
+                            <option value=""></option>
+                            <option value="newest">Най-нови</option>
+                            <option value="lowestPrice">Най-ниска цена</option>
+                            <option value="highestPrice">Най-висока цена</option>
                         </select>
                     </div>
                 </div>

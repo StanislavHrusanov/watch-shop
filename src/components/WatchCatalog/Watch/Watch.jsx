@@ -10,10 +10,10 @@ function Watch({ watch }) {
                 <h4>{watch.title}</h4>
 
                 {
-                    watch.salePrice && watch.salePrice < watch.price
+                    watch.oldPrice && watch.oldPrice > watch.price
                         ? <div className={styles["price-box"]}>
-                            <span className={styles["old-price"]}>{watch.price} лв.</span>
-                            <span className={styles["new-price"]}>{watch.salePrice} лв.</span>
+                            <span className={styles["old-price"]}>{watch.oldPrice} лв.</span>
+                            <span className={styles["new-price"]}>{watch.price} лв.</span>
                         </div>
                         : <div className={styles["price-box"]}>
                             <span className={styles["reg-price"]}>{watch.price} лв.</span>
