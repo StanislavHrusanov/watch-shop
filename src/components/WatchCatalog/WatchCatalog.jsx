@@ -3,6 +3,7 @@ import styles from "./WatchCatalog.module.css";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoadingContext } from "../../contexts/LoadingContext";
+import { PageContext } from "../../contexts/PageContext";
 import Watch from "./Watch/Watch";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import * as watchService from "../../services/watchService";
@@ -13,19 +14,24 @@ function WatchCatalog() {
     const [page, setPage] = useState(1);
     const [limit] = useState(4);
     const [pages, setPages] = useState(1);
+    const [filterCriteria, setFilterCriteria] = useState('all');
+    const [sortCriteria, setSortCriteria] = useState('newest');
 
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
+    const { filterType, setFilterType } = useContext(PageContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         (async () => {
             try {
                 showLoading();
-                const watchesOnPage = await watchService.getAllPaginated(page, limit);
-                const allWatchesCount = await watchService.getWatchesCount();
+                const watchesOnPage = await watchService.getAllPaginated(filterCriteria, sortCriteria, page, limit);
+                const allWatchesCount = await watchService.getWatchesCount(filterCriteria, 'all');
                 setWatches(watchesOnPage);
                 setWatchCount(allWatchesCount);
                 setPages(Math.ceil(watchCount / limit));
+                setPage(state => filterCriteria === filterType ? state : 1);
+                setFilterType(filterCriteria);
                 hideLoading();
 
             } catch (error) {
@@ -34,7 +40,15 @@ function WatchCatalog() {
                 navigate('/watches');
             }
         })();
-    }, [showLoading, hideLoading, navigate, page, limit, watchCount]);
+    }, [showLoading, hideLoading, navigate, page, limit, watchCount, filterCriteria, sortCriteria, filterType, setFilterType]);
+
+    const onSort = (criteria) => {
+        setSortCriteria(criteria)
+    }
+
+    const onFilter = (criteria) => {
+        setFilterCriteria(criteria);
+    }
 
     const prevPage = () => {
         if (page > 1) {
@@ -58,17 +72,26 @@ function WatchCatalog() {
                 <div className={styles["row-sort-filter"]}>
                     <div className={styles["filter"]}>
                         <p>Тип:</p>
-                        <select name="" id="">
-                            <option value="Всички">Всички</option>
-                            <option value="Мъжки">Мъжки</option>
-                            <option value="Дамски">Дамски</option>
+                        <select
+                            onChange={(e) => onFilter(e.target.value)}
+                            value={filterCriteria}
+                        >
+                            <option value=""></option>
+                            <option value="all">Всички</option>
+                            <option value="men">Мъжки</option>
+                            <option value="women">Дамски</option>
                         </select>
                     </div>
                     <div className={styles["sort"]}>
                         <p>Сортирай по:</p>
-                        <select name="" id="">
-                            <option value="Цена">Цена</option>
-                            <option value="Мъжки">Най-нови</option>
+                        <select
+                            onChange={(e) => onSort(e.target.value)}
+                            value={sortCriteria}
+                        >
+                            <option value=""></option>
+                            <option value="newest">Най-нови</option>
+                            <option value="lowestPrice">Най-ниска цена</option>
+                            <option value="highestPrice">Най-висока цена</option>
                         </select>
                     </div>
                 </div>

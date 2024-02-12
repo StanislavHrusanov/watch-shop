@@ -4,8 +4,8 @@ const endpoints = {
     addWatch: '/watches',
     getAll: '/watches',
     getBrandsLogo: '/watches/brandsLogo',
-    getAllPaginated: (page, limit) => `/watches/paginated?page=${page}&limit=${limit}`,
-    getWatchesCount: '/watches/count',
+    getAllPaginated: (filterCriteria, sortCriteria, page, limit) => `/watches/paginated?filteredByCriteria=${filterCriteria}&sortedByCriteria=${sortCriteria}&page=${page}&limit=${limit}`,
+    getWatchesCount: (type, brand) => `/watches/count?type=${type}&brand=${brand}`,
     getWatchesByTypePaginated: (type, page, limit) => `/watches/types/${type}?page=${page}&limit=${limit}`,
     getWatchesByTypeCount: (type) => `/watches/count/types/${type}`,
     getWatchesByBrandPaginated: (brand, page, limit) => `/watches/brands/${brand}?page=${page}&limit=${limit}`,
@@ -18,9 +18,9 @@ export const getAll = () => api.get(endpoints.getAll);
 
 export const getBrandsLogo = () => api.get(endpoints.getBrandsLogo);
 
-export const getAllPaginated = (page, limit) => api.get(endpoints.getAllPaginated(page, limit));
+export const getAllPaginated = (filterCriteria, sortCriteria, page, limit) => api.get(endpoints.getAllPaginated(filterCriteria, sortCriteria, page, limit));
 
-export const getWatchesCount = () => api.get(endpoints.getWatchesCount);
+export const getWatchesCount = (type, brand) => api.get(endpoints.getWatchesCount(type, brand));
 
 export const getWatchesByTypePaginated = (type, page, limit) => api.get(endpoints.getWatchesByTypePaginated(type, page, limit));
 

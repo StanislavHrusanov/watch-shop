@@ -25,7 +25,11 @@
     background-color: transparent;
 }
 
-.filter,
+.filter {
+    display: flex;
+    margin-left: 0.25rem;
+}
+
 .sort {
     display: flex;
     margin-left: 0.25rem;
