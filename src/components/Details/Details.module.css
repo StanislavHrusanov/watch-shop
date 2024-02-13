@@ -47,12 +47,23 @@
     color: #333;
 }
 
-.price {
+.price-container {
+    display: flex;
+}
+
+.reg--price {
     margin: 0 1rem 0.25rem;
     font-size: 1.5rem;
     font-weight: 600;
     color: #fd4f0c;
-    text-align: left;
+}
+
+.old--price {
+    margin: 0 0 0.25rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    text-decoration: line-through;
 }
 
 .avl {
@@ -60,6 +71,14 @@
     padding: 7px 10px;
     font-size: 0.8rem;
     background-color: #33cc33;
+    color: #fff;
+}
+
+.not-avl {
+    margin: 0 1rem 1rem;
+    padding: 7px 10px;
+    font-size: 0.8rem;
+    background-color: red;
     color: #fff;
 }
 
