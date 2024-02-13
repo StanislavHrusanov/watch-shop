@@ -1,8 +1,9 @@
 import styles from "./Watch.module.css";
+import { Link } from "react-router-dom";
 
 function Watch({ watch }) {
     return (
-        <div className={styles["watch-card"]}>
+        <Link className={styles["watch-card"]} to={`/watches/${watch._id}`}>
             <div className={styles["img-box"]}>
                 <img src={watch.imageUrl} alt="" />
             </div>
@@ -21,7 +22,7 @@ function Watch({ watch }) {
                 }
 
             </div>
-        </div>
+        </Link>
     );
 }
 

@@ -11,6 +11,7 @@
     -moz-box-shadow: 5px 10px 10px -1px rgba(0, 0, 0, 0.7);
     box-shadow: 5px 10px 10px -1px rgba(0, 0, 0, 0.7);
     /* border: 2px solid rgb(237, 241, 255); */
+    text-decoration: none;
 }
 
 .watch-card:hover {
