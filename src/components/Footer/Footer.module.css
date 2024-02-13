@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: relative;
+    bottom: 0;
     background: url('https://www.watchgecko.com/cdn/shop/articles/Hublot_MP-13_Tourbillon_Bi-Axis_Retrograde_913.NX.1170.RX_-_Savoir-faire_-_10-original_-_Copy.png?v=1682342527');
 }
 
@@ -42,12 +44,12 @@
 }
 
 .row-1 {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
     background-color: #fd4f0c;
     color: #252525;
     font-size: 1.1rem;
-    text-align: center;
 }
 
 @media (min-width: 992px) {
