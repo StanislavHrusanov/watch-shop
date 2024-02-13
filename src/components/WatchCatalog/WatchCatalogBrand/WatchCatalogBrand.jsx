@@ -18,7 +18,7 @@ function WatchCatalogBrand() {
     const { brand } = useParams();
 
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
-    const { watchBrand, setWatchBrand } = useContext(PageContext);
+    const { watchBrand, setWatchBrand, watchType, setWatchType } = useContext(PageContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -30,8 +30,16 @@ function WatchCatalogBrand() {
                 setWatches(allWatches);
                 setWatchCount(allWatchesCount);
                 setPages(state => Math.ceil(watchCount / limit) ? state = Math.ceil(watchCount / limit) : state = 1);
-                setPage(state => brand === watchBrand ? state : 1);
-                setWatchBrand(state => state = brand);
+                // setPage(state => brand === watchBrand ? state : 1);
+                setPage((state) => {
+                    if (type !== watchType || brand !== watchBrand) {
+                        setSortCriteria('newest');
+                        return 1;
+                    }
+                    return state;
+                });
+                setWatchType(type);
+                setWatchBrand(brand);
                 hideLoading();
 
             } catch (error) {
