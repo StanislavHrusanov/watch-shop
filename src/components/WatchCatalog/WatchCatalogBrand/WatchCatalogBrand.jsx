@@ -48,7 +48,21 @@ function WatchCatalogBrand() {
                 navigate('/watches');
             }
         })();
-    }, [showLoading, hideLoading, navigate, brand, page, limit, watchCount, watchBrand, setWatchBrand, sortCriteria, type]);
+    }, [
+        showLoading,
+        hideLoading,
+        navigate,
+        brand,
+        page,
+        limit,
+        watchCount,
+        watchBrand,
+        setWatchBrand,
+        sortCriteria,
+        type,
+        setWatchType,
+        watchType
+    ]);
 
     const onSort = (criteria) => {
         setSortCriteria(criteria)
