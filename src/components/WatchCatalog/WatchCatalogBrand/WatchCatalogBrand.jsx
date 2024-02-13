@@ -13,6 +13,8 @@ function WatchCatalogBrand() {
     const [page, setPage] = useState(1);
     const [limit] = useState(4);
     const [pages, setPages] = useState(1);
+    const [type, setType] = useState('all');
+    const [sortCriteria, setSortCriteria] = useState('newest');
     const { brand } = useParams();
 
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
@@ -23,8 +25,8 @@ function WatchCatalogBrand() {
         (async () => {
             try {
                 showLoading();
-                const allWatches = await watchService.getWatchesByBrandPaginated(brand, page, limit);
-                const allWatchesCount = await watchService.getWatchesByBrandCount(brand);
+                const allWatches = await watchService.getWatchesByBrandPaginated(brand, type, sortCriteria, page, limit);
+                const allWatchesCount = await watchService.getWatchesCount(type, brand);
                 setWatches(allWatches);
                 setWatchCount(allWatchesCount);
                 setPages(state => Math.ceil(watchCount / limit) ? state = Math.ceil(watchCount / limit) : state = 1);
@@ -38,7 +40,15 @@ function WatchCatalogBrand() {
                 navigate('/watches');
             }
         })();
-    }, [showLoading, hideLoading, navigate, brand, page, limit, watchCount, watchBrand, setWatchBrand]);
+    }, [showLoading, hideLoading, navigate, brand, page, limit, watchCount, watchBrand, setWatchBrand, sortCriteria, type]);
+
+    const onSort = (criteria) => {
+        setSortCriteria(criteria)
+    }
+
+    const onFilter = (criteria) => {
+        setType(criteria);
+    }
 
     const prevPage = () => {
         if (page > 1) {
@@ -62,17 +72,26 @@ function WatchCatalogBrand() {
                 <div className={styles["row-sort-filter"]}>
                     <div className={styles["filter"]}>
                         <p>Тип:</p>
-                        <select name="" id="">
-                            <option value="Всички">Всички</option>
-                            <option value="Мъжки">Мъжки</option>
-                            <option value="Дамски">Дамски</option>
+                        <select
+                            onChange={(e) => onFilter(e.target.value)}
+                            value={type}
+                        >
+                            <option value=""></option>
+                            <option value="all">Всички</option>
+                            <option value="men">Мъжки</option>
+                            <option value="women">Дамски</option>
                         </select>
                     </div>
                     <div className={styles["sort"]}>
                         <p>Сортирай по:</p>
-                        <select name="" id="">
-                            <option value="Цена">Цена</option>
-                            <option value="Мъжки">Най-нови</option>
+                        <select
+                            onChange={(e) => onSort(e.target.value)}
+                            value={sortCriteria}
+                        >
+                            <option value=""></option>
+                            <option value="newest">Най-нови</option>
+                            <option value="lowestPrice">Най-ниска цена</option>
+                            <option value="highestPrice">Най-висока цена</option>
                         </select>
                     </div>
                 </div>
