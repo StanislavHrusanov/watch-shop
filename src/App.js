@@ -33,10 +33,10 @@ function App() {
             <Routes>
 
               <Route path='/' element={<Home />} />
-              <Route path='/details' element={<Details />} />
               <Route path='/watches' element={<WatchCatalog />} />
               <Route path='/watches/types/:type' element={<WatchCatalogType />} />
               <Route path='/watches/brands/:brand' element={<WatchCatalogBrand />} />
+              <Route path='/watches/:watchId' element={<Details />} />
               <Route path='/register' element={<Register />} />
               <Route path='/login' element={<Login />} />
               <Route path='/addWatch' element={<AddWatch />} />
