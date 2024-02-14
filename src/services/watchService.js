@@ -8,7 +8,8 @@ const endpoints = {
     getWatchesCount: (type, brand) => `/watches/count?type=${type}&brand=${brand}`,
     getWatchesByBrandPaginated: (brand, type, sortCriteria, page, limit) => `/watches/brands?brand=${brand}&type=${type}&sortedByCriteria=${sortCriteria}&page=${page}&limit=${limit}`,
     getWatchDetails: (watchId) => `/watches/${watchId}`,
-    getSimilarWatches: (brand, watchId) => `/watches/similarWatches?brand=${brand}&watchId=${watchId}`
+    getSimilarWatches: (brand, watchId) => `/watches/similarWatches?brand=${brand}&watchId=${watchId}`,
+    editWatch: (watchId) => `/watches/${watchId}`
 };
 
 export const addWatch = (data) => api.post(endpoints.addWatch, data);
@@ -26,3 +27,5 @@ export const getWatchesByBrandPaginated = (brand, type, sortCriteria, page, limi
 export const getWatchDetails = (watchId) => api.get(endpoints.getWatchDetails(watchId));
 
 export const getSimilarWatches = (brand, watchId) => api.get(endpoints.getSimilarWatches(brand, watchId));
+
+export const editWatch = (watchId, watchData) => api.put(endpoints.editWatch(watchId), watchData);
