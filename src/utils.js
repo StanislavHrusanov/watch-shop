@@ -5,3 +5,10 @@ export const splitDescription = (description) => {
 
     return paragraphs;
 }
+
+export const joinDescription = (description) => {
+    let joinedDescription = '';
+    description.forEach(p => joinedDescription += p.paragraph + '\n');
+
+    return joinedDescription.substring(0, joinedDescription.length - 1);
+}
