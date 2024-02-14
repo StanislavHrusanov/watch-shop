@@ -129,6 +129,11 @@ function Details() {
                         </div>
                     }
 
+                    <div className={styles["edit-delete-box"]}>
+                        <div>Редактирай</div>
+                        <div>Изтрий</div>
+                    </div>
+
                 </div>
                 {
                     similarWatches.length > 0 &&
