@@ -1,7 +1,7 @@
 import styles from "./Details.module.css";
 import uniqid from "uniqid";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Watch from "../WatchCatalog/Watch/Watch";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { LoadingContext } from "../../contexts/LoadingContext";
@@ -130,7 +130,7 @@ function Details() {
                     }
 
                     <div className={styles["edit-delete-box"]}>
-                        <div>Редактирай</div>
+                        <Link to={`/watches/${watch._id}/edit`}>Редактирай</Link>
                         <div>Изтрий</div>
                     </div>
 
