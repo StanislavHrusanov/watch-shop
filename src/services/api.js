@@ -14,25 +14,25 @@ async function request(method, url, data) {
     const user = JSON.parse(localStorage.getItem('user'));
 
     if (user) {
-        options.headers['X-Authorization'] = user.accessToken;
+        options.headers['x-authorization'] = user.accessToken;
     }
 
     try {
         const res = await fetch(host + url, options);
         if (res.ok === false) {
-            if (res.status === 403) {
-                localStorage.removeItem('user');
-                window.location = '/';
-            }
+            // if (res.status === 403) {
+            //     localStorage.removeItem('user');
+            //     window.location = '/';
+            // }
             const error = await res.json();
             throw new Error(error.message);
         }
 
-        // if (res.status === 204) {
-        //     return res;
-        // } else {
-        return res.json();
-        // }
+        if (res.status === 204) {
+            return res;
+        } else {
+            return res.json();
+        }
 
     } catch (error) {
         window.alert(error.message);
