@@ -1,10 +1,11 @@
 import styles from "./Form.module.css";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { LoadingContext } from "../../contexts/LoadingContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import * as authService from "../../services/authService";
+import { trimInputs } from "../../utils";
 
 function Register() {
     const [inputs, setInputs] = useState({
@@ -33,6 +34,7 @@ function Register() {
 
         try {
             showLoading();
+            trimInputs(inputs);
             const createdUser = await authService.register(inputs);
             userLogin(createdUser);
             hideLoading();
