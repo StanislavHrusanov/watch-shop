@@ -1,7 +1,13 @@
 import styles from "./Navbar.module.css";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Navbar() {
+    const [isNavToggled, setIsNavToggled] = useState(false);
+
+    const { user, userLogout } = useContext(AuthContext);
+
     return (
         <div className={styles["container"]}>
             <div className={styles["row"]}>
@@ -11,7 +17,7 @@ function Navbar() {
                     </Link>
                 </div>
                 <div className={styles["col-1"]}>
-                    <div className={styles["btn"]}>
+                    <div onClick={() => setIsNavToggled(!isNavToggled)} className={styles["btn"]}>
                         <i className="fa fa-bars"></i>
                     </div>
                 </div>
@@ -21,10 +27,32 @@ function Navbar() {
                 <Link className={styles["nav-link"]} to="/watches">Часовници</Link>
                 <Link className={styles["nav-link"]} to="/watches/types/men">Мъжки</Link>
                 <Link className={styles["nav-link"]} to="/watches/types/women">Дамски</Link>
-                <Link className={styles["nav-link"]} to="/register">Регистрация</Link>
-                <Link className={styles["nav-link"]}>Вход</Link>
-                <Link className={styles["nav-link"]}>Изход</Link>
+                {
+                    user
+                        ? <Link onClick={() => userLogout()} className={styles["nav-link"]}>Изход</Link>
+                        : <>
+                            <Link className={styles["nav-link"]} to="/register">Регистрация</Link>
+                            <Link className={styles["nav-link"]} to="/login">Вход</Link>
+                        </>
+                }
             </nav>
+            {
+                isNavToggled &&
+                <nav className={styles["nav-mobile"]}>
+                    <Link className={styles["nav-link"]} to="/">Начало</Link>
+                    <Link className={styles["nav-link"]} to="/watches">Часовници</Link>
+                    <Link className={styles["nav-link"]} to="/watches/types/men">Мъжки</Link>
+                    <Link className={styles["nav-link"]} to="/watches/types/women">Дамски</Link>
+                    {
+                        user
+                            ? <Link onClick={() => userLogout()} className={styles["nav-link"]}>Изход</Link>
+                            : <>
+                                <Link className={styles["nav-link"]} to="/register">Регистрация</Link>
+                                <Link className={styles["nav-link"]} to="/login">Вход</Link>
+                            </>
+                    }
+                </nav>
+            }
         </div>
     )
 }
