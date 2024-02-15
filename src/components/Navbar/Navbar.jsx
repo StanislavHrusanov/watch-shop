@@ -21,7 +21,7 @@ function Navbar() {
                 <Link className={styles["nav-link"]} to="/watches">Часовници</Link>
                 <Link className={styles["nav-link"]} to="/watches/types/men">Мъжки</Link>
                 <Link className={styles["nav-link"]} to="/watches/types/women">Дамски</Link>
-                <Link className={styles["nav-link"]}>Регистрация</Link>
+                <Link className={styles["nav-link"]} to="/register">Регистрация</Link>
                 <Link className={styles["nav-link"]}>Вход</Link>
                 <Link className={styles["nav-link"]}>Изход</Link>
             </nav>
