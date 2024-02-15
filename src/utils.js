@@ -12,3 +12,10 @@ export const joinDescription = (description) => {
 
     return joinedDescription.substring(0, joinedDescription.length - 1);
 }
+
+export const trimInputs = (inputsObj) => {
+    for (let key in inputsObj) {
+        inputsObj[key] = inputsObj[key].trim();
+    }
+    return inputsObj;
+}
