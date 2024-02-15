@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Watch from "../WatchCatalog/Watch/Watch";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { LoadingContext } from "../../contexts/LoadingContext";
+import { AuthContext } from "../../contexts/AuthContext";
 import * as watchService from "../../services/watchService";
 
 function Details() {
@@ -12,6 +13,7 @@ function Details() {
     const [similarWatches, setSimilarWatches] = useState([]);
     const { watchId } = useParams();
 
+    const { user } = useContext(AuthContext);
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
     const navigate = useNavigate();
 
@@ -63,12 +65,16 @@ function Details() {
                                 : <span className={styles["not-avl"]}>Изчерпан</span>
                         }
 
-                        <div className={styles["buttons"]}>
-                            <div className={styles["buy-btn"]}>Поръчай</div>
-                            <div className={styles["wish-btn"]}>
-                                <i className="fas fa-heart text-primary"></i>
+                        {
+                            !user?.isAdmin &&
+                            <div className={styles["buttons"]}>
+                                <div className={styles["buy-btn"]}>Поръчай</div>
+                                <div className={styles["wish-btn"]}>
+                                    <i className="fas fa-heart text-primary"></i>
+                                </div>
                             </div>
-                        </div>
+                        }
+
                         <h4>Технически характеристики</h4>
                         <div className={styles["desc-table"]}>
                             <table>
@@ -129,10 +135,13 @@ function Details() {
                         </div>
                     }
 
-                    <div className={styles["edit-delete-box"]}>
-                        <Link to={`/watches/${watch._id}/edit`}>Редактирай</Link>
-                        <div>Изтрий</div>
-                    </div>
+                    {
+                        user?.isAdmin &&
+                        <div className={styles["edit-delete-box"]}>
+                            <Link to={`/watches/${watch._id}/edit`}>Редактирай</Link>
+                            <div>Изтрий</div>
+                        </div>
+                    }
 
                 </div>
                 {
