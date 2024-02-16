@@ -25,10 +25,12 @@ function Details() {
                 showLoading();
                 const watchDetails = await watchService.getWatchDetails(watchId);
                 const allSimilarWatches = await watchService.getSimilarWatches(watchDetails.brand, watchDetails._id);
-                const userDetails = await myProfileService.getUserInfo(user._id);
+                if (user) {
+                    const userDetails = await myProfileService.getUserInfo(user?._id);
+                    setUserInfo(userDetails);
+                }
                 setWatch(watchDetails);
                 setSimilarWatches(allSimilarWatches);
-                setUserInfo(userDetails);
                 hideLoading();
 
             } catch (error) {
@@ -37,7 +39,7 @@ function Details() {
                 return navigate('/watches');
             }
         })();
-    }, [showLoading, hideLoading, navigate, watchId, user._id]);
+    }, [showLoading, hideLoading, navigate, watchId, user]);
 
     const deleteWatch = async () => {
         try {
@@ -102,16 +104,28 @@ function Details() {
                         }
 
                         {
-                            !user?.isAdmin &&
-                            <div className={styles["buttons"]}>
-                                <div className={styles["buy-btn"]}>Поръчай</div>
-                                <div
-                                    onClick={updateWishlist}
-                                    className={styles[userInfo?.wishlist?.find(x => x === watch._id) ? "wish-btn-added" : "wish-btn"]}
-                                >
-                                    <i className="fas fa-heart text-primary"></i>
+                            !user
+                                ? <div className={styles["buttons"]}>
+
+                                    <Link to="/login" className={styles["buy-btn"]}>Поръчай</Link>
+                                    <Link to="/login" className={styles["wish-btn"]}>
+                                        <i className="fas fa-heart text-primary"></i>
+                                    </Link>
                                 </div>
-                            </div>
+                                : user && !user?.isAdmin
+                                    ? <div className={styles["buttons"]}>
+
+                                        <div className={styles["buy-btn"]}>Поръчай</div>
+                                        <div
+                                            onClick={updateWishlist}
+                                            className={styles[userInfo?.wishlist?.find(x => x === watch._id) ? "wish-btn-added" : "wish-btn"]}
+                                        >
+                                            <i className="fas fa-heart text-primary"></i>
+                                        </div>
+                                    </div>
+                                    : <div className={styles["buttons"]}>
+                                        <div className={styles["qty-for-admin"]}>Налични: {watch.quantity} броя</div>
+                                    </div>
                         }
 
                         <h4>Технически характеристики</h4>
