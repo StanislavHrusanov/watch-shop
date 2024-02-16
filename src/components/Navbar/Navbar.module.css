@@ -106,7 +106,9 @@
     overflow: auto;
     background-color: #fd4f0c;
     z-index: 100;
-    
+    border: 1px solid #333;
+    border-bottom: 0;
+
 }
 
 .dropdown-content a {
@@ -114,8 +116,7 @@
     color: #333;
     padding: 0.5rem 0.25rem;
     text-decoration: none;
-    border: 1px solid #333;
-    border-bottom: 0;
+    border-bottom: 1px solid #333;
 }
 
 @media (min-width: 992px) {
@@ -147,6 +148,11 @@
 
     .dropdown-content {
         margin-top: 13.5px;
+    }
+
+    .dropdown-content a {
+        border-bottom: 1px solid #333;
+        border-top: 0;
     }
 }
 
