@@ -35,6 +35,24 @@ function Details() {
         })();
     }, [showLoading, hideLoading, navigate, watchId]);
 
+    const deleteWatch = async (e) => {
+        try {
+
+            const choice = window.confirm('Сигурен ли си, че искаш да изтриеш този часовник?');
+
+            if (choice) {
+                showLoading();
+                await watchService.delWatch(watch._id);
+                hideLoading();
+                navigate('/watches');
+            }
+        } catch (error) {
+            window.alert(error.message);
+            hideLoading();
+            return navigate(`/watches/${watch._id}`);
+        }
+    }
+
 
     return isLoading
         ? (
@@ -139,7 +157,7 @@ function Details() {
                         user?.isAdmin &&
                         <div className={styles["edit-delete-box"]}>
                             <Link to={`/watches/${watch._id}/edit`}>Редактирай</Link>
-                            <div>Изтрий</div>
+                            <div onClick={deleteWatch}>Изтрий</div>
                         </div>
                     }
 
