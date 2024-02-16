@@ -7,10 +7,12 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { LoadingContext } from "../../contexts/LoadingContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import * as watchService from "../../services/watchService";
+import * as myProfileService from "../../services/myProfileService";
 
 function Details() {
     const [watch, setWatch] = useState({});
     const [similarWatches, setSimilarWatches] = useState([]);
+    const [userInfo, setUserInfo] = useState({});
     const { watchId } = useParams();
 
     const { user } = useContext(AuthContext);
@@ -23,8 +25,10 @@ function Details() {
                 showLoading();
                 const watchDetails = await watchService.getWatchDetails(watchId);
                 const allSimilarWatches = await watchService.getSimilarWatches(watchDetails.brand, watchDetails._id);
+                const userDetails = await myProfileService.getUserInfo(user._id);
                 setWatch(watchDetails);
                 setSimilarWatches(allSimilarWatches);
+                setUserInfo(userDetails);
                 hideLoading();
 
             } catch (error) {
@@ -33,9 +37,9 @@ function Details() {
                 return navigate('/watches');
             }
         })();
-    }, [showLoading, hideLoading, navigate, watchId]);
+    }, [showLoading, hideLoading, navigate, watchId, user._id]);
 
-    const deleteWatch = async (e) => {
+    const deleteWatch = async () => {
         try {
 
             const choice = window.confirm('Сигурен ли си, че искаш да изтриеш този часовник?');
@@ -50,6 +54,20 @@ function Details() {
             window.alert(error.message);
             hideLoading();
             return navigate(`/watches/${watch._id}`);
+        }
+    }
+
+    const updateWishlist = async () => {
+        try {
+            const userWishlist = await myProfileService.updateWishlist(user._id, watchId);
+            setUserInfo(state => ({
+                ...state,
+                wishlist: userWishlist
+            }));
+
+        } catch (error) {
+            window.alert(error.message);
+            return navigate('/watches');
         }
     }
 
@@ -87,7 +105,10 @@ function Details() {
                             !user?.isAdmin &&
                             <div className={styles["buttons"]}>
                                 <div className={styles["buy-btn"]}>Поръчай</div>
-                                <div className={styles["wish-btn"]}>
+                                <div
+                                    onClick={updateWishlist}
+                                    className={styles[userInfo?.wishlist?.find(x => x === watch._id) ? "wish-btn-added" : "wish-btn"]}
+                                >
                                     <i className="fas fa-heart text-primary"></i>
                                 </div>
                             </div>

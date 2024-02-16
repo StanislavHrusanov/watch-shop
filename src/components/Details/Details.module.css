@@ -132,6 +132,20 @@
     font-weight: 600;
     background-color: #fd4f0c;
     color: #fff;
+    cursor: pointer;
+}
+
+.wish-btn-added {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 16px;
+    width: calc(50% - 24px);
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color: #fd4f0c;
+    color: #333;
+    cursor: pointer;
 }
 
 .desc-table {
