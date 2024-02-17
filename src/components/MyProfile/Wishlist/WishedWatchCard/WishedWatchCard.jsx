@@ -1,21 +1,29 @@
+import { Link } from "react-router-dom";
 import styles from "./WishedWatchCard.module.css";
 
-function WishedWatchCard() {
+function WishedWatchCard({ watch }) {
     return (
-        <div className={styles["watch-card"]}>
+        <Link className={styles["watch-card"]} to={`/watches/${watch._id}`}>
             <div className={styles["img-box"]}>
-                <img src="https://cdncloudcart.com/16251/products/images/3108/vostok-uss-ssn-571-46mm-energia-automatic-mazki-casovnik-vk61-571c612-image_610e90589946d_800x800.png?1628345727" alt="" />
+                <img src={watch.imageUrl} alt="" />
                 <div className={styles["remove-btn"]}>
                     <i className="fas fa-trash text-primary"></i>
                 </div>
             </div>
             <div className={styles["card-body"]}>
-                <h4>Vostok-Europe SSN-571</h4>
-                <div className={styles["price-box"]}>
-                    <span className={styles["reg-price"]}>1508 лв.</span>
-                </div>
+                <h4>{watch.title}</h4>
+                {
+                    watch.oldPrice && watch.oldPrice > watch.price
+                        ? <div className={styles["price-box"]}>
+                            <span className={styles["old-price"]}>{watch.oldPrice} лв.</span>
+                            <span className={styles["new-price"]}>{watch.price} лв.</span>
+                        </div>
+                        : <div className={styles["price-box"]}>
+                            <span className={styles["reg-price"]}>{watch.price} лв.</span>
+                        </div>
+                }
             </div>
-        </div>
+        </Link>
     );
 }
 
