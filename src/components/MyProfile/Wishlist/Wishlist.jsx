@@ -29,6 +29,19 @@ function Wishlist() {
         })();
     }, [showLoading, hideLoading, navigate, user._id]);
 
+    const onRemoveFromWishlist = async (watchForRemoving) => {
+
+        try {
+            await myProfileService.removeFromWishlist(user._id, watchForRemoving._id);
+            setWishlist(state => state.filter(x => x._id !== watchForRemoving._id));
+            navigate('/wishlist');
+
+        } catch (error) {
+            window.alert(error.message);
+            return navigate('/wishlist');
+        }
+    }
+
     return isLoading
         ? (
             <LoadingSpinner />
@@ -39,7 +52,7 @@ function Wishlist() {
                 <div className={styles["row-cards"]}>
                     {
                         wishlist.length > 0
-                            ? wishlist.map(x => <WishedWatchCard key={x._id} watch={x} />)
+                            ? wishlist.map(x => <WishedWatchCard key={x._id} watch={x} onRemoveFromWishlist={onRemoveFromWishlist} />)
                             : <div className={styles["no-watches-container"]}>
                                 <p className={styles["no-watches-message"]}>
                                     Все още няма  добавени часовници в любими!

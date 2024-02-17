@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import styles from "./WishedWatchCard.module.css";
 
-function WishedWatchCard({ watch }) {
+function WishedWatchCard({ watch, onRemoveFromWishlist }) {
     return (
         <Link className={styles["watch-card"]} to={`/watches/${watch._id}`}>
             <div className={styles["img-box"]}>
                 <img src={watch.imageUrl} alt="" />
                 <div className={styles["remove-btn"]}>
-                    <i className="fas fa-trash text-primary"></i>
+                    <i onClick={() => { onRemoveFromWishlist(watch) }} className="fas fa-trash text-primary"></i>
                 </div>
             </div>
             <div className={styles["card-body"]}>
