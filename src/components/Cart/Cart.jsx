@@ -2,6 +2,24 @@ import { useState } from "react";
 import styles from "./Cart.module.css";
 
 function Cart() {
+    const [qty, setQty] = useState(1);
+    const [isDisabled, setIsDisabled] = useState(false);
+
+    const increaseQty = () => {
+        if (qty < 3) {
+            setQty(state => state + 1);
+        } else if (qty === 3) {
+            setIsDisabled(true);
+        }
+    }
+
+    const decreaseQty = () => {
+        if (qty > 1) {
+            setQty(state => state - 1);
+        } else if (qty === 1) {
+            setIsDisabled(true);
+        }
+    }
 
     return (
         <div className={styles["container"]}>
@@ -16,7 +34,11 @@ function Cart() {
                         <div className={styles["card-body"]}>
                             <div className={styles["title-qty-box"]}>
                                 <h4>Vostok-Europe SSN-571 ddasdas ddasdas dadadadadadas</h4>
-                                <input className={styles["choose-qty"]} type="number" />
+                                <div className={styles["choose-qty"]} disabled={isDisabled}>
+                                    <i className="fa fa-minus" onClick={() => decreaseQty()}></i>
+                                    <span className={styles["qty"]}>{qty}</span>
+                                    <i className="fa fa-plus" onClick={() => increaseQty()}></i>
+                                </div>
                             </div>
                             <div className={styles["trash-price-box"]}>
                                 <div className={styles["remove-btn"]}>

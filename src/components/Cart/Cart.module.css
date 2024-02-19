@@ -108,9 +108,24 @@
 }
 
 .choose-qty {
-    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70px;
     height: 25px;
     margin-left: 1rem;
+}
+
+.choose-qty i{
+    font-size: 0.8rem;
+    padding: 3px;
+    color: #333;
+    cursor: pointer;
+}
+
+.choose-qty span{
+    padding: 3px 8px;
+    background-color: #fff;
 }
 
 .trash-price-box {
