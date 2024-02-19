@@ -22,6 +22,7 @@ import WatchCatalogBrand from './components/WatchCatalog/WatchCatalogBrand/Watch
 import { LoadingProvider } from './contexts/LoadingContext';
 import { PageProvider } from './contexts/PageContext';
 import { AuthProvider } from './contexts/AuthContext';
+import { UserProfileProvider } from './contexts/UserContext';
 
 function App() {
   return (
@@ -29,30 +30,32 @@ function App() {
       <LoadingProvider>
         <PageProvider>
           <AuthProvider>
-            <Tapbar />
-            <Navbar />
-            <div className={styles["container"]}>
+            <UserProfileProvider>
+              <Tapbar />
+              <Navbar />
+              <div className={styles["container"]}>
 
-              <Routes>
+                <Routes>
 
-                <Route path='/' element={<Home />} />
-                <Route path='/watches' element={<WatchCatalog />} />
-                <Route path='/watches/types/:type' element={<WatchCatalogType />} />
-                <Route path='/watches/brands/:brand' element={<WatchCatalogBrand />} />
-                <Route path='/watches/:watchId' element={<Details />} />
-                <Route path='/watches/:watchId/edit' element={<Edit />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/addWatch' element={<AddWatch />} />
-                <Route path='/wishlist' element={<Wishlist />} />
-                <Route path='/myOrders' element={<MyOrders />} />
-                <Route path='/cart' element={<Cart />} />
-                <Route path='/purchase' element={<Purchase />} />
-                <Route path='/purchases' element={<Purchases />} />
+                  <Route path='/' element={<Home />} />
+                  <Route path='/watches' element={<WatchCatalog />} />
+                  <Route path='/watches/types/:type' element={<WatchCatalogType />} />
+                  <Route path='/watches/brands/:brand' element={<WatchCatalogBrand />} />
+                  <Route path='/watches/:watchId' element={<Details />} />
+                  <Route path='/watches/:watchId/edit' element={<Edit />} />
+                  <Route path='/register' element={<Register />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path='/addWatch' element={<AddWatch />} />
+                  <Route path='/wishlist' element={<Wishlist />} />
+                  <Route path='/myOrders' element={<MyOrders />} />
+                  <Route path='/cart' element={<Cart />} />
+                  <Route path='/purchase' element={<Purchase />} />
+                  <Route path='/purchases' element={<Purchases />} />
 
-              </Routes>
-            </div>
-            <Footer />
+                </Routes>
+              </div>
+              <Footer />
+            </UserProfileProvider>
           </AuthProvider>
         </PageProvider>
       </LoadingProvider>
