@@ -10,4 +10,5 @@ html {
 .container {
   margin: auto;
   max-width: 1600px;
+  min-height: 65vh;
 }
