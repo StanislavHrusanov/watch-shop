@@ -53,7 +53,7 @@ function Tapbar() {
                             <i className="fas fa-heart text-primary"></i>
                             <span className={styles["badge"]}>{userInfo.wishlist.length}</span>
                         </Link>
-                        <Link className={styles["btn"]}>
+                        <Link className={styles["btn"]} to='/cart'>
                             <i className="fas fa-shopping-cart text-primary"></i>
                             <span className={styles["badge"]}>{userInfo.cart.length}</span>
                         </Link>
