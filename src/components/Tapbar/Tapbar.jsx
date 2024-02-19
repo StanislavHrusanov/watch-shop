@@ -1,7 +1,32 @@
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Tapbar.module.css";
+import { AuthContext } from "../../contexts/AuthContext";
+import { UserProfileContext } from "../../contexts/UserContext";
+import * as myProfileService from "../../services/myProfileService";
 
 function Tapbar() {
+    const { user } = useContext(AuthContext);
+    const { userInfo, setUserInfo } = useContext(UserProfileContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        (async () => {
+            try {
+                if (user) {
+                    const detailsOfUser = await myProfileService.getUserInfo(user._id);
+                    setUserInfo(detailsOfUser);
+
+                }
+
+            } catch (error) {
+                window.alert(error.message);
+                navigate('/');
+            }
+        })();
+    }, [user, setUserInfo, navigate]);
+
+
     return (
         <div className={styles["container"]}>
             <div className={styles["row"]}>
@@ -22,16 +47,31 @@ function Tapbar() {
                         </div>
                     </form>
                 </div>
-                <div className={styles["col-2"]}>
-                    <Link className={styles["btn"]}>
-                        <i className="fas fa-heart text-primary"></i>
-                        <span className={styles["badge"]}>0</span>
-                    </Link>
-                    <Link className={styles["btn"]}>
-                        <i className="fas fa-shopping-cart text-primary"></i>
-                        <span className={styles["badge"]}>0</span>
-                    </Link>
-                </div>
+                {user && !user?.isAdmin &&
+                    <div className={styles["col-2"]}>
+                        <Link className={styles["btn"]} to="/wishlist">
+                            <i className="fas fa-heart text-primary"></i>
+                            <span className={styles["badge"]}>{userInfo.wishlist.length}</span>
+                        </Link>
+                        <Link className={styles["btn"]}>
+                            <i className="fas fa-shopping-cart text-primary"></i>
+                            <span className={styles["badge"]}>{userInfo.cart.length}</span>
+                        </Link>
+                    </div>
+                }
+                {
+                    !user &&
+                    <div className={styles["col-2"]}>
+                        <Link className={styles["btn"]} to="/login">
+                            <i className="fas fa-heart text-primary"></i>
+                            <span className={styles["badge"]}>{userInfo.wishlist.length}</span>
+                        </Link>
+                        <Link className={styles["btn"]} to='/login'>
+                            <i className="fas fa-shopping-cart text-primary"></i>
+                            <span className={styles["badge"]}>{userInfo.cart.length}</span>
+                        </Link>
+                    </div>
+                }
             </div>
         </div>
     );
