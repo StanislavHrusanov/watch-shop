@@ -2,12 +2,22 @@ import styles from "./Navbar.module.css";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
+import { UserProfileContext } from "../../contexts/UserContext";
 
 function Navbar() {
     const [isNavToggled, setIsNavToggled] = useState(false);
     const [isDropdownToggled, setIsDropdownToggled] = useState(false);
 
     const { user, userLogout } = useContext(AuthContext);
+    const { setUserInfo } = useContext(UserProfileContext);
+
+    const onLogout = () => {
+        userLogout();
+        setUserInfo({
+            wishlist: [],
+            cart: []
+        });
+    }
 
     return (
         <div className={styles["container"]}>
@@ -51,7 +61,7 @@ function Navbar() {
                                     </div>
                                 }
                             </div>
-                            <Link onClick={() => userLogout()} className={styles["nav-link"]}>Изход</Link>
+                            <Link onClick={() => onLogout()} className={styles["nav-link"]}>Изход</Link>
                         </>
                         : <>
                             <Link className={styles["nav-link"]} to="/register">Регистрация</Link>
@@ -89,7 +99,7 @@ function Navbar() {
                                         </div>
                                     }
                                 </div>
-                                <Link onClick={() => userLogout()} className={styles["nav-link"]}>Изход</Link>
+                                <Link onClick={() => onLogout()} className={styles["nav-link"]}>Изход</Link>
                             </>
                             : <>
                                 <Link className={styles["nav-link"]} to="/register">Регистрация</Link>
