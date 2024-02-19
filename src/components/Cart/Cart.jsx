@@ -1,6 +1,8 @@
+import { useState } from "react";
 import styles from "./Cart.module.css";
 
 function Cart() {
+
     return (
         <div className={styles["container"]}>
             <h3>Количка</h3>
@@ -9,9 +11,13 @@ function Cart() {
                     <div className={styles["watch-card"]}>
                         <div className={styles["img-box"]}>
                             <img src="https://cdncloudcart.com/16251/products/images/3108/vostok-uss-ssn-571-46mm-energia-automatic-mazki-casovnik-vk61-571c612-image_610e90589946d_800x800.png?1628345727" alt="" />
+                            <span className={styles["not-avl"]}>Остават: 1 бр.</span>
                         </div>
                         <div className={styles["card-body"]}>
-                            <h4>Vostok-Europe SSN-571</h4>
+                            <div className={styles["title-qty-box"]}>
+                                <h4>Vostok-Europe SSN-571 ddasdas ddasdas dadadadadadas</h4>
+                                <input className={styles["choose-qty"]} type="number" />
+                            </div>
                             <div className={styles["trash-price-box"]}>
                                 <div className={styles["remove-btn"]}>
                                     <i className="fas fa-trash text-primary"></i>
