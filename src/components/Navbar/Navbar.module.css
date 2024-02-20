@@ -29,8 +29,9 @@
 .title {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     height: 3rem;
+    padding-left: 1rem;
     font-size: 1.5rem;
     color: #343a40;
     background-color: #fd4f0c;
