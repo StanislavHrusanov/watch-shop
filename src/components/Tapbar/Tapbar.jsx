@@ -4,6 +4,7 @@ import styles from "./Tapbar.module.css";
 import { AuthContext } from "../../contexts/AuthContext";
 import { UserProfileContext } from "../../contexts/UserContext";
 import * as myProfileService from "../../services/myProfileService";
+import * as utils from "../../utils";
 
 function Tapbar() {
     const { user } = useContext(AuthContext);
@@ -55,7 +56,7 @@ function Tapbar() {
                         </Link>
                         <Link className={styles["btn"]} to='/cart'>
                             <i className="fas fa-shopping-cart text-primary"></i>
-                            <span className={styles["badge"]}>{userInfo.cart.length}</span>
+                            <span className={styles["badge"]}>{utils.getSum(userInfo.cart)}</span>
                         </Link>
                     </div>
                 }
@@ -68,7 +69,7 @@ function Tapbar() {
                         </Link>
                         <Link className={styles["btn"]} to='/login'>
                             <i className="fas fa-shopping-cart text-primary"></i>
-                            <span className={styles["badge"]}>{userInfo.cart.length}</span>
+                            <span className={styles["badge"]}>{utils.getSum(userInfo.cart)}</span>
                         </Link>
                     </div>
                 }
