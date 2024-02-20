@@ -205,6 +205,8 @@ function Details() {
                         </div>
                     </>
                 }
+
+                <div className={styles["added-to-cart"]}>Часовникът е добавен в количката!</div>
             </div>
         );
 }

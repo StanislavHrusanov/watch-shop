@@ -240,6 +240,23 @@ table {
     margin: 0 0 1rem;
 }
 
+.added-to-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    left: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: #333;
+    color: #fd4f0c;
+    border: 2px solid #fd4f0c;
+    padding: 1rem;
+    z-index: 1111;
+}
+
 @media (min-width: 600px) {
     .row-similar-watches {
         flex-direction: row;
