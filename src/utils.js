@@ -19,3 +19,12 @@ export const trimInputs = (inputsObj) => {
     }
     return inputsObj;
 }
+
+export const getSum = (arr) => {
+    let sum = 0;
+
+    for (let el of arr) {
+        sum += el.qty;
+    }
+    return sum;
+}
