@@ -5,7 +5,7 @@ export const UserProfileContext = createContext();
 export const UserProfileProvider = ({ children }) => {
     const [userInfo, setUserInfo] = useState({
         wishlist: [],
-        cart: []
+        cart: [{ watch: {}, qty: 0 }]
     });
 
     return (

@@ -13,6 +13,8 @@ import * as myProfileService from "../../services/myProfileService";
 function Details() {
     const [watch, setWatch] = useState({});
     const [similarWatches, setSimilarWatches] = useState([]);
+    const [showMessage, setShowMessage] = useState(false);
+    const [qty, setQty] = useState(0);
     const { watchId } = useParams();
 
     const { user } = useContext(AuthContext);
@@ -70,6 +72,41 @@ function Details() {
         }
     }
 
+    const addToCart = async () => {
+        try {
+            const watchForAdding = await watchService.getWatchDetails(watch._id);
+            const indexOfAdded = userInfo.cart.findIndex(x => x.watch === watch._id);
+            let chosenQty = 1;
+
+            if (indexOfAdded !== -1) {
+                chosenQty = userInfo.cart[indexOfAdded].qty + 1;
+            }
+
+            if (watchForAdding.quantity >= chosenQty) {
+
+                const updatedCart = await myProfileService.addToCart(user._id, watchId, chosenQty);
+                setUserInfo(state => ({
+                    ...state,
+                    cart: updatedCart
+                }));
+
+                setShowMessage('Часовникът е добавен в количката!');
+                setTimeout(() => {
+                    setShowMessage('');
+                }, 2000);
+            } else {
+                setShowMessage('Недостатъчна наличност!');
+                setTimeout(() => {
+                    setShowMessage('');
+                }, 2000);
+            }
+
+        } catch (error) {
+            window.alert(error.message);
+            return navigate(`/watches/${watch._id}`);
+        }
+    }
+
 
     return isLoading
         ? (
@@ -112,7 +149,7 @@ function Details() {
                                 : user && !user?.isAdmin
                                     ? <div className={styles["buttons"]}>
 
-                                        <div className={styles["buy-btn"]}>Поръчай</div>
+                                        <div onClick={addToCart} className={styles["buy-btn"]}>Поръчай</div>
                                         <div
                                             onClick={updateWishlist}
                                             className={styles[userInfo.wishlist.find(x => x._id === watch._id) ? "wish-btn-added" : "wish-btn"]}
@@ -205,8 +242,9 @@ function Details() {
                         </div>
                     </>
                 }
-
-                <div className={styles["added-to-cart"]}>Часовникът е добавен в количката!</div>
+                {showMessage &&
+                    <div className={styles["added-to-cart"]}>{showMessage}</div>
+                }
             </div>
         );
 }
