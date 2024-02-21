@@ -15,7 +15,7 @@ function Navbar() {
         userLogout();
         setUserInfo({
             wishlist: [],
-            cart: []
+            cart: [{ watch: {}, qty: 0 }]
         });
     }
 

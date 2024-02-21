@@ -55,6 +55,30 @@ function Cart() {
             return navigate(`/cart`);
         }
     }
+
+    const onDecreaseQty = async (watch) => {
+        try {
+            const watchForDecreasing = await watchService.getWatchDetails(watch._id);
+            const indexOfAdded = userInfo.cart.findIndex(x => x.watch._id === watch._id);
+            let chosenQty = userInfo.cart[indexOfAdded].qty;
+            if (chosenQty > 1) {
+                chosenQty -= 1;
+
+
+                if (watchForDecreasing.quantity > chosenQty) {
+
+                    const updatedCart = await myProfileService.decreaseQty(user._id, watchForDecreasing._id, chosenQty);
+                    setUserInfo(state => ({
+                        ...state,
+                        cart: updatedCart
+                    }));
+                }
+            }
+        } catch (error) {
+            window.alert(error.message);
+            return navigate(`/cart`);
+        }
+    }
     // const [qty, setQty] = useState(1);
     // const [isDisabled, setIsDisabled] = useState(false);
 
@@ -92,6 +116,7 @@ function Cart() {
                                             watch={x.watch}
                                             qty={x.qty}
                                             increaseQty={increaseQty}
+                                            onDecreaseQty={onDecreaseQty}
                                         />
                                     )
                                 })}

@@ -3,7 +3,8 @@ import styles from "./WatchInCart.module.css";
 function WatchInCart({
     watch,
     qty,
-    increaseQty
+    increaseQty,
+    onDecreaseQty
 }) {
     return (
         <div className={styles["watch-card"]}>
@@ -15,7 +16,7 @@ function WatchInCart({
                 <div className={styles["title-qty-box"]}>
                     <h4>{watch.title}</h4>
                     <div className={styles["choose-qty"]} >
-                        <i className="fa fa-minus"  ></i>
+                        <i onClick={() => onDecreaseQty(watch)} className="fa fa-minus"  ></i>
                         <span className={styles["qty"]}>{qty}</span>
                         <i onClick={() => increaseQty(watch)} className="fa fa-plus" ></i>
                     </div>
