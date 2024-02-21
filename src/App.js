@@ -14,7 +14,7 @@ import Edit from './components/Edit/Edit';
 import Wishlist from './components/MyProfile/Wishlist/Wishlist';
 import MyOrders from './components/MyProfile/MyOrders/MyOrders';
 import Cart from './components/Cart/Cart';
-import Purchase from './components/Cart/Purchase/Purchase';
+import Purchase from './components/Purchase/Purchase';
 import Purchases from './components/AdminProfile/Purchases';
 import WatchCatalogType from './components/WatchCatalog/WatchCatalogType/WatchCatalogType';
 import WatchCatalogBrand from './components/WatchCatalog/WatchCatalogBrand/WatchCatalogBrand';

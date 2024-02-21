@@ -14,7 +14,6 @@ function Details() {
     const [watch, setWatch] = useState({});
     const [similarWatches, setSimilarWatches] = useState([]);
     const [showMessage, setShowMessage] = useState(false);
-    const [qty, setQty] = useState(0);
     const { watchId } = useParams();
 
     const { user } = useContext(AuthContext);
