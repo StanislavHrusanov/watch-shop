@@ -1,88 +1,123 @@
-import { useState } from "react";
 import styles from "./Cart.module.css";
+import { useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import WatchInCart from "./WatchInCart/WatchInCart";
+import { AuthContext } from "../../contexts/AuthContext";
+import { LoadingContext } from "../../contexts/LoadingContext";
+import { UserProfileContext } from "../../contexts/UserContext";
+import * as watchService from "../../services/watchService";
+import * as myProfileService from "../../services/myProfileService";
 
 function Cart() {
-    const [qty, setQty] = useState(1);
-    const [isDisabled, setIsDisabled] = useState(false);
+    const { user } = useContext(AuthContext);
+    const { userInfo, setUserInfo } = useContext(UserProfileContext);
+    const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
+    const navigate = useNavigate();
 
-    const increaseQty = () => {
-        if (qty < 3) {
-            setQty(state => state + 1);
-        } else if (qty === 3) {
-            setIsDisabled(true);
+    useEffect(() => {
+        (async () => {
+            try {
+                showLoading();
+                const freshUserInfo = await myProfileService.getUserInfo(user._id);
+                setUserInfo(state => ({
+                    ...state,
+                    cart: freshUserInfo.cart
+                }));
+                hideLoading();
+                console.log(freshUserInfo);
+            } catch (error) {
+                window.alert(error.message);
+                hideLoading();
+                return navigate('/cart');
+            }
+        })();
+    }, [showLoading, hideLoading, navigate, setUserInfo, user._id]);
+
+    const increaseQty = async (watch) => {
+        try {
+            const watchForIncreasing = await watchService.getWatchDetails(watch._id);
+            const indexOfAdded = userInfo.cart.findIndex(x => x.watch._id === watch._id);
+            let chosenQty = userInfo.cart[indexOfAdded].qty + 1;
+
+
+            if (watchForIncreasing.quantity >= chosenQty) {
+
+                const updatedCart = await myProfileService.addToCart(user._id, watchForIncreasing._id, chosenQty);
+                setUserInfo(state => ({
+                    ...state,
+                    cart: updatedCart
+                }));
+            }
+
+        } catch (error) {
+            window.alert(error.message);
+            return navigate(`/cart`);
         }
     }
+    // const [qty, setQty] = useState(1);
+    // const [isDisabled, setIsDisabled] = useState(false);
 
-    const decreaseQty = () => {
-        if (qty > 1) {
-            setQty(state => state - 1);
-        } else if (qty === 1) {
-            setIsDisabled(true);
-        }
-    }
+    // const increaseQty = () => {
+    //     if (qty < 3) {
+    //         setQty(state => state + 1);
+    //     } else if (qty === 3) {
+    //         setIsDisabled(true);
+    //     }
+    // }
 
-    return (
-        <div className={styles["container"]}>
-            <h3>Количка</h3>
-            <div className={styles["row"]}>
-                <div className={styles["items-box"]}>
-                    <div className={styles["watch-card"]}>
-                        <div className={styles["img-box"]}>
-                            <img src="https://cdncloudcart.com/16251/products/images/3108/vostok-uss-ssn-571-46mm-energia-automatic-mazki-casovnik-vk61-571c612-image_610e90589946d_800x800.png?1628345727" alt="" />
-                            <span className={styles["not-avl"]}>Остават: 1 бр.</span>
-                        </div>
-                        <div className={styles["card-body"]}>
-                            <div className={styles["title-qty-box"]}>
-                                <h4>Vostok-Europe SSN-571 ddasdas ddasdas dadadadadadas</h4>
-                                <div className={styles["choose-qty"]} disabled={isDisabled}>
-                                    <i className="fa fa-minus" onClick={() => decreaseQty()}></i>
-                                    <span className={styles["qty"]}>{qty}</span>
-                                    <i className="fa fa-plus" onClick={() => increaseQty()}></i>
-                                </div>
+    // const decreaseQty = () => {
+    //     if (qty > 1) {
+    //         setQty(state => state - 1);
+    //     } else if (qty === 1) {
+    //         setIsDisabled(true);
+    //     }
+    // }
+
+    return isLoading
+        ? (
+            <LoadingSpinner />
+        )
+        : (
+            <div className={styles["container"]}>
+                <h3>Количка</h3>
+                {
+                    userInfo.cart[0].qty > 0
+                        ? <div className={styles["row"]}>
+                            <div className={styles["items-box"]}>
+                                {userInfo.cart.map((x) => {
+                                    return (
+                                        <WatchInCart
+                                            key={x._id}
+                                            watch={x.watch}
+                                            qty={x.qty}
+                                            increaseQty={increaseQty}
+                                        />
+                                    )
+                                })}
                             </div>
-                            <div className={styles["trash-price-box"]}>
-                                <div className={styles["remove-btn"]}>
-                                    <i className="fas fa-trash text-primary"></i>
+                            <div className={styles["cart-summary-proceed-box"]}>
+                                <div className={styles["cart-summary-box"]}>
+                                    <h4>Преглед на поръчка</h4>
+                                    <p className={styles["items-price"]}>Стойност на продуктите: 2808 лв.</p>
+                                    <p className={styles["total"]}>Тотал: 2808 лв.</p>
                                 </div>
-                                <div className={styles["price-box"]}>
-                                    <span className={styles["reg-price"]}>1508 лв.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles["watch-card"]}>
-                        <div className={styles["img-box"]}>
-                            <img src="https://cdncloudcart.com/16251/products/images/3108/vostok-uss-ssn-571-46mm-energia-automatic-mazki-casovnik-vk61-571c612-image_610e90589946d_800x800.png?1628345727" alt="" />
-                        </div>
-                        <div className={styles["card-body"]}>
-                            <h4>Vostok-Europe SSN-571</h4>
-                            <div className={styles["trash-price-box"]}>
-                                <div className={styles["remove-btn"]}>
-                                    <i className="fas fa-trash text-primary"></i>
-                                </div>
-                                <div className={styles["price-box"]}>
-                                    <span className={styles["old-price"]}>1500 лв.</span>
-                                    <span className={styles["new-price"]}>1300 лв.</span>
+                                <div className={styles["proceed-to-checkout-box"]}>
+                                    <div className={styles["proceed-to-checkout"]}>
+                                        <p className={styles["next-step"]}>Следваща стъпка</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className={styles["cart-summary-proceed-box"]}>
-                    <div className={styles["cart-summary-box"]}>
-                        <h4>Преглед на поръчка</h4>
-                        <p className={styles["items-price"]}>Стойност на продуктите: 2808 лв.</p>
-                        <p className={styles["total"]}>Тотал: 2808 лв.</p>
-                    </div>
-                    <div className={styles["proceed-to-checkout-box"]}>
-                        <div className={styles["proceed-to-checkout"]}>
-                            <p className={styles["next-step"]}>Следваща стъпка</p>
+                        : <div className={styles["no-watches-container"]}>
+                            <p className={styles["no-watches-message"]}>
+                                Все още няма  добавени часовници в количката!
+                            </p>
                         </div>
-                    </div>
-                </div>
+                }
+
             </div>
-        </div>
-    );
+        );
 }
 
 export default Cart;

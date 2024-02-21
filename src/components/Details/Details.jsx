@@ -74,16 +74,14 @@ function Details() {
     const addToCart = async () => {
         try {
             const watchForAdding = await watchService.getWatchDetails(watch._id);
-            const indexOfAdded = userInfo.cart.findIndex(x => x.watch === watch._id);
+            const indexOfAdded = userInfo.cart.findIndex(x => x.watch._id === watch._id);
             let chosenQty = 1;
-
             if (indexOfAdded !== -1) {
                 chosenQty = userInfo.cart[indexOfAdded].qty + 1;
             }
-
             if (watchForAdding.quantity >= chosenQty) {
-
                 const updatedCart = await myProfileService.addToCart(user._id, watchId, chosenQty);
+
                 setUserInfo(state => ({
                     ...state,
                     cart: updatedCart

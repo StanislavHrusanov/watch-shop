@@ -2,11 +2,11 @@ import styles from "./Wishlist.module.css";
 import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
+import WishedWatchCard from "./WishedWatchCard/WishedWatchCard";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { LoadingContext } from "../../../contexts/LoadingContext";
 import { UserProfileContext } from "../../../contexts/UserContext";
 import * as myProfileService from "../../../services/myProfileService";
-import WishedWatchCard from "./WishedWatchCard/WishedWatchCard";
 
 function Wishlist() {
     const { user } = useContext(AuthContext);
