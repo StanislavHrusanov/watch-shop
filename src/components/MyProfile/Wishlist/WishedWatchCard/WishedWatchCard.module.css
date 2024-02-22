@@ -12,6 +12,7 @@
     box-shadow: 5px 10px 10px -1px rgba(0, 0, 0, 0.7);
     /* border: 2px solid rgb(237, 241, 255); */
     text-decoration: none;
+    position: relative;
 }
 
 .watch-card:hover {
@@ -33,6 +34,7 @@
 
 .card-body {
     width: 100%;
+    text-decoration: none;
     /* border-top: 1px solid rgba(0, 0, 0, 0.125); */
 }
 
@@ -67,7 +69,7 @@
 }
 
 .remove-btn {
-    position: relative;
+    position: absolute;
     top: 5px;
     right: 5px;
 }

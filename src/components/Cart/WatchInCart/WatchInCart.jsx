@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./WatchInCart.module.css";
 
 function WatchInCart({
@@ -8,14 +9,14 @@ function WatchInCart({
     onRemoveFromCart
 }) {
     return (
-        <div className={styles["watch-card"]}>
-            <div className={styles["img-box"]}>
+        <div className={styles["watch-card"]} >
+            <Link className={styles["img-box"]} to={`/watches/${watch._id}`}>
                 <img src={watch.imageUrl} alt="" />
                 <span className={styles["not-avl"]}>Остават: {watch.quantity} бр.</span>
-            </div>
+            </Link>
             <div className={styles["card-body"]}>
                 <div className={styles["title-qty-box"]}>
-                    <h4>{watch.title}</h4>
+                    <Link className={styles["watch-title"]} to={`/watches/${watch._id}`}>{watch.title}</Link>
                     <div className={styles["choose-qty"]} >
                         <i onClick={() => onDecreaseQty(watch)} className="fa fa-minus"  ></i>
                         <span className={styles["qty"]}>{qty}</span>

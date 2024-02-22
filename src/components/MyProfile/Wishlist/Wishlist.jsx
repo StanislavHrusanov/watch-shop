@@ -37,8 +37,7 @@ function Wishlist() {
             setUserInfo(state => ({
                 ...state,
                 wishlist: state.wishlist.filter(x => x._id !== watchForRemoving._id)
-            }))
-            navigate('/wishlist');
+            }));
 
         } catch (error) {
             window.alert(error.message);

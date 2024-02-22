@@ -3,14 +3,15 @@ import styles from "./WishedWatchCard.module.css";
 
 function WishedWatchCard({ watch, onRemoveFromWishlist }) {
     return (
-        <Link className={styles["watch-card"]} to={`/watches/${watch._id}`}>
-            <div className={styles["img-box"]}>
-                <img src={watch.imageUrl} alt="" />
-                <div className={styles["remove-btn"]}>
-                    <i onClick={() => { onRemoveFromWishlist(watch) }} className="fas fa-trash text-primary"></i>
-                </div>
+        <div className={styles["watch-card"]} >
+            <div className={styles["remove-btn"]}>
+                <i onClick={() => { onRemoveFromWishlist(watch) }} className="fas fa-trash text-primary"></i>
             </div>
-            <div className={styles["card-body"]}>
+            <Link className={styles["img-box"]} to={`/watches/${watch._id}`}>
+                <img src={watch.imageUrl} alt="" />
+
+            </Link>
+            <Link className={styles["card-body"]} to={`/watches/${watch._id}`}>
                 <h4>{watch.title}</h4>
                 {
                     watch.oldPrice && watch.oldPrice > watch.price
@@ -22,8 +23,9 @@ function WishedWatchCard({ watch, onRemoveFromWishlist }) {
                             <span className={styles["reg-price"]}>{watch.price} лв.</span>
                         </div>
                 }
-            </div>
-        </Link>
+            </Link>
+
+        </div>
     );
 }
 
