@@ -4,7 +4,8 @@ function WatchInCart({
     watch,
     qty,
     increaseQty,
-    onDecreaseQty
+    onDecreaseQty,
+    onRemoveFromCart
 }) {
     return (
         <div className={styles["watch-card"]}>
@@ -23,7 +24,7 @@ function WatchInCart({
                 </div>
                 <div className={styles["trash-price-box"]}>
                     <div className={styles["remove-btn"]}>
-                        <i className="fas fa-trash text-primary"></i>
+                        <i onClick={() => onRemoveFromCart(watch)} className="fas fa-trash text-primary"></i>
                     </div>
                     {
                         watch.oldPrice && watch.oldPrice > watch.price

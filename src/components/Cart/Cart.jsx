@@ -8,6 +8,7 @@ import { LoadingContext } from "../../contexts/LoadingContext";
 import { UserProfileContext } from "../../contexts/UserProfileContext";
 import * as watchService from "../../services/watchService";
 import * as myProfileService from "../../services/myProfileService";
+import * as utils from "../../utils";
 
 function Cart() {
     const { user } = useContext(AuthContext);
@@ -20,12 +21,8 @@ function Cart() {
             try {
                 showLoading();
                 const freshUserInfo = await myProfileService.getUserInfo(user._id);
-                setUserInfo(state => ({
-                    ...state,
-                    cart: freshUserInfo.cart
-                }));
+                setUserInfo(freshUserInfo);
                 hideLoading();
-                console.log(freshUserInfo);
             } catch (error) {
                 window.alert(error.message);
                 hideLoading();
@@ -79,24 +76,19 @@ function Cart() {
             return navigate(`/cart`);
         }
     }
-    // const [qty, setQty] = useState(1);
-    // const [isDisabled, setIsDisabled] = useState(false);
 
-    // const increaseQty = () => {
-    //     if (qty < 3) {
-    //         setQty(state => state + 1);
-    //     } else if (qty === 3) {
-    //         setIsDisabled(true);
-    //     }
-    // }
-
-    // const decreaseQty = () => {
-    //     if (qty > 1) {
-    //         setQty(state => state - 1);
-    //     } else if (qty === 1) {
-    //         setIsDisabled(true);
-    //     }
-    // }
+    const onRemoveFromCart = async (watch) => {
+        try {
+            await myProfileService.removeFromCart(user._id, watch._id);
+            setUserInfo(state => ({
+                ...state,
+                cart: state.cart.filter(x => x.watch._id !== watch._id)
+            }));
+        } catch (error) {
+            window.alert(error.message);
+            return navigate(`/cart`);
+        }
+    }
 
     return isLoading
         ? (
@@ -117,6 +109,7 @@ function Cart() {
                                             qty={x.qty}
                                             increaseQty={increaseQty}
                                             onDecreaseQty={onDecreaseQty}
+                                            onRemoveFromCart={onRemoveFromCart}
                                         />
                                     )
                                 })}
@@ -124,8 +117,8 @@ function Cart() {
                             <div className={styles["cart-summary-proceed-box"]}>
                                 <div className={styles["cart-summary-box"]}>
                                     <h4>Преглед на поръчка</h4>
-                                    <p className={styles["items-price"]}>Стойност на продуктите: 2808 лв.</p>
-                                    <p className={styles["total"]}>Тотал: 2808 лв.</p>
+                                    <p className={styles["items-price"]}>Стойност на продуктите: {utils.getTotalPrice(userInfo.cart)} лв.</p>
+                                    <p className={styles["total"]}>Тотал: {utils.getTotalPrice(userInfo.cart)} лв.</p>
                                 </div>
                                 <div className={styles["proceed-to-checkout-box"]}>
                                     <div className={styles["proceed-to-checkout"]}>
