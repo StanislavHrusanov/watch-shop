@@ -28,3 +28,12 @@ export const getSum = (arr) => {
     }
     return sum;
 }
+
+export const getTotalPrice = (arr) => {
+    let totalPrice = 0;
+
+    for (let el of arr) {
+        totalPrice += el.watch.price * el.qty;
+    }
+    return totalPrice;
+}
