@@ -6,7 +6,7 @@ import Watch from "../WatchCatalog/Watch/Watch";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { LoadingContext } from "../../contexts/LoadingContext";
 import { AuthContext } from "../../contexts/AuthContext";
-import { UserProfileContext } from "../../contexts/UserContext";
+import { UserProfileContext } from "../../contexts/UserProfileContext";
 import * as watchService from "../../services/watchService";
 import * as myProfileService from "../../services/myProfileService";
 

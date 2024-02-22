@@ -1,32 +1,13 @@
-import { useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Tapbar.module.css";
 import { AuthContext } from "../../contexts/AuthContext";
-import { UserProfileContext } from "../../contexts/UserContext";
-import * as myProfileService from "../../services/myProfileService";
+import { UserProfileContext } from "../../contexts/UserProfileContext";
 import * as utils from "../../utils";
 
 function Tapbar() {
     const { user } = useContext(AuthContext);
-    const { userInfo, setUserInfo } = useContext(UserProfileContext);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        (async () => {
-            try {
-                if (user) {
-                    const detailsOfUser = await myProfileService.getUserInfo(user._id);
-                    setUserInfo(detailsOfUser);
-
-                }
-
-            } catch (error) {
-                window.alert(error.message);
-                navigate('/');
-            }
-        })();
-    }, [user, setUserInfo, navigate]);
-
+    const { userInfo } = useContext(UserProfileContext);
 
     return (
         <div className={styles["container"]}>

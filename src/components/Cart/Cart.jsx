@@ -5,7 +5,7 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import WatchInCart from "./WatchInCart/WatchInCart";
 import { AuthContext } from "../../contexts/AuthContext";
 import { LoadingContext } from "../../contexts/LoadingContext";
-import { UserProfileContext } from "../../contexts/UserContext";
+import { UserProfileContext } from "../../contexts/UserProfileContext";
 import * as watchService from "../../services/watchService";
 import * as myProfileService from "../../services/myProfileService";
 
@@ -106,7 +106,7 @@ function Cart() {
             <div className={styles["container"]}>
                 <h3>Количка</h3>
                 {
-                    userInfo.cart[0].qty > 0
+                    userInfo.cart.length > 0
                         ? <div className={styles["row"]}>
                             <div className={styles["items-box"]}>
                                 {userInfo.cart.map((x) => {

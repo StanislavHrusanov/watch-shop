@@ -5,7 +5,7 @@ import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import WishedWatchCard from "./WishedWatchCard/WishedWatchCard";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { LoadingContext } from "../../../contexts/LoadingContext";
-import { UserProfileContext } from "../../../contexts/UserContext";
+import { UserProfileContext } from "../../../contexts/UserProfileContext";
 import * as myProfileService from "../../../services/myProfileService";
 
 function Wishlist() {

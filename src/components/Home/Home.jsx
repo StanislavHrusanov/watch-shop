@@ -1,10 +1,13 @@
 import styles from "./Home.module.css";
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import { UserProfileContext } from "../../contexts/UserProfileContext";
 import { LoadingContext } from "../../contexts/LoadingContext";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import WatchCard from "./WatchCard/WatchCard";
 import * as watchService from "../../services/watchService";
+import * as myProfileService from "../../services/myProfileService";
 import { HOME_PAGE_FIRST_BRAND, HOME_PAGE_SECOND_BRAND } from "../../constants";
 
 
@@ -12,6 +15,8 @@ function Home() {
     const [watches, setWatches] = useState([]);
     const [brandsLogo, setBrandsLogo] = useState([]);
 
+    const { user } = useContext(AuthContext);
+    const { setUserInfo } = useContext(UserProfileContext);
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
     const navigate = useNavigate();
 
@@ -21,6 +26,11 @@ function Home() {
                 showLoading();
                 const allWatches = await watchService.getAll();
                 const allLogoes = await watchService.getBrandsLogo();
+                if (user) {
+                    const detailsOfUser = await myProfileService.getUserInfo(user._id);
+                    setUserInfo(detailsOfUser);
+
+                }
                 setWatches(allWatches);
                 setBrandsLogo(allLogoes);
                 hideLoading();
@@ -31,7 +41,7 @@ function Home() {
                 navigate('/');
             }
         })();
-    }, [showLoading, hideLoading, navigate])
+    }, [showLoading, hideLoading, navigate, user, setUserInfo]);
 
     const firstRowWathes = watches
         .filter(x => x.brand === HOME_PAGE_FIRST_BRAND)

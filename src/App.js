@@ -9,6 +9,7 @@ import Details from './components/Details/Details';
 import WatchCatalog from './components/WatchCatalog/WatchCatalog';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
+import Logout from './components/Auth/Logout';
 import AddWatch from './components/AddWatch/AddWatch';
 import Edit from './components/Edit/Edit';
 import Wishlist from './components/MyProfile/Wishlist/Wishlist';
@@ -22,7 +23,7 @@ import WatchCatalogBrand from './components/WatchCatalog/WatchCatalogBrand/Watch
 import { LoadingProvider } from './contexts/LoadingContext';
 import { PageProvider } from './contexts/PageContext';
 import { AuthProvider } from './contexts/AuthContext';
-import { UserProfileProvider } from './contexts/UserContext';
+import { UserProfileProvider } from './contexts/UserProfileContext';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
                   <Route path='/watches/:watchId/edit' element={<Edit />} />
                   <Route path='/register' element={<Register />} />
                   <Route path='/login' element={<Login />} />
+                  <Route path='/logout' element={<Logout />} />
                   <Route path='/addWatch' element={<AddWatch />} />
                   <Route path='/wishlist' element={<Wishlist />} />
                   <Route path='/myOrders' element={<MyOrders />} />
