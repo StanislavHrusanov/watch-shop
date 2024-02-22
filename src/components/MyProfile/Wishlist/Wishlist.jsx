@@ -19,10 +19,7 @@ function Wishlist() {
             try {
                 showLoading();
                 const freshUserInfo = await myProfileService.getUserInfo(user._id);
-                setUserInfo(state => ({
-                    ...state,
-                    wishlist: freshUserInfo.wishlist
-                }));
+                setUserInfo(freshUserInfo);
                 hideLoading();
 
             } catch (error) {
