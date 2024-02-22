@@ -82,7 +82,7 @@
     background-color: #fd4f0c;
     color: #333;
     cursor: pointer;
-
+    text-decoration: none;
 }
 
 .no-watches-container {

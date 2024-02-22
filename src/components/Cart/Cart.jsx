@@ -1,6 +1,6 @@
 import styles from "./Cart.module.css";
 import { useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import WatchInCart from "./WatchInCart/WatchInCart";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -122,7 +122,7 @@ function Cart() {
                                 </div>
                                 <div className={styles["proceed-to-checkout-box"]}>
                                     <div className={styles["proceed-to-checkout"]}>
-                                        <p className={styles["next-step"]}>Следваща стъпка</p>
+                                        <Link className={styles["next-step"]} to="/purchase">Следваща стъпка</Link>
                                     </div>
                                 </div>
                             </div>
