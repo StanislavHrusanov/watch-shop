@@ -7,7 +7,8 @@ const endpoints = {
     removeFromWishlist: (userId, watchId) => `/myProfile/wishlist/remove?userId=${userId}&watchId=${watchId}`,
     addToCart: (userId, watchId, qty) => `/myProfile/cart/add?userId=${userId}&watchId=${watchId}&qty=${qty}`,
     removeFromCart: (userId, watchId) => `/myProfile/cart/remove?userId=${userId}&watchId=${watchId}`,
-    decreaseQty: (userId, watchId, qty) => `/myProfile/cart/decreaseQty?userId=${userId}&watchId=${watchId}&qty=${qty}`
+    decreaseQty: (userId, watchId, qty) => `/myProfile/cart/decreaseQty?userId=${userId}&watchId=${watchId}&qty=${qty}`,
+    updateUserCart: (userId) => `/myProfile/userInfo/updateCart?userId=${userId}`
 };
 
 export const getUserInfo = (userId) => api.get(endpoints.getUserInfo(userId));
@@ -23,3 +24,5 @@ export const addToCart = (userId, watchId, qty) => api.put(endpoints.addToCart(u
 export const removeFromCart = (userId, watchId) => api.put(endpoints.removeFromCart(userId, watchId));
 
 export const decreaseQty = (userId, watchId, qty) => api.put(endpoints.decreaseQty(userId, watchId, qty));
+
+export const updateUserCart = (userId) => api.put(endpoints.updateUserCart(userId));
