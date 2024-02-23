@@ -17,11 +17,16 @@ function WatchInCart({
             <div className={styles["card-body"]}>
                 <div className={styles["title-qty-box"]}>
                     <Link className={styles["watch-title"]} to={`/watches/${watch._id}`}>{watch.title}</Link>
-                    <div className={styles["choose-qty"]} >
-                        <i onClick={() => onDecreaseQty(watch)} className="fa fa-minus"  ></i>
-                        <span className={styles["qty"]}>{qty}</span>
-                        <i onClick={() => increaseQty(watch)} className="fa fa-plus" ></i>
-                    </div>
+                    {
+                        watch.quantity < 1
+                            ? <p className={styles["out-of-stock"]}> Изчерпан</p>
+                            : <div className={styles["choose-qty"]} >
+                                <i onClick={() => onDecreaseQty(watch)} className="fa fa-minus"  ></i>
+                                <span className={styles["qty"]}>{qty}</span>
+                                <i onClick={() => increaseQty(watch)} className="fa fa-plus" ></i>
+                            </div>
+                    }
+
                 </div>
                 <div className={styles["trash-price-box"]}>
                     <div className={styles["remove-btn"]}>
@@ -30,11 +35,11 @@ function WatchInCart({
                     {
                         watch.oldPrice && watch.oldPrice > watch.price
                             ? <div className={styles["price-box"]}>
-                                <span className={styles["old-price"]}>{watch.oldPrice * qty} лв.</span>
-                                <span className={styles["new-price"]}>{watch.price * qty} лв.</span>
+                                <span className={styles["old-price"]}>{watch.oldPrice} лв.</span>
+                                <span className={styles["new-price"]}>{watch.price} лв.</span>
                             </div>
                             : <div className={styles["price-box"]}>
-                                <span className={styles["reg-price"]}>{watch.price * qty} лв.</span>
+                                <span className={styles["reg-price"]}>{watch.price} лв.</span>
                             </div>
                     }
                 </div>
