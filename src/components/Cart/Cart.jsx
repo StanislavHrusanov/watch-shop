@@ -23,6 +23,7 @@ function Cart() {
                 const freshUserInfo = await myProfileService.getUserInfo(user._id);
                 setUserInfo(freshUserInfo);
                 hideLoading();
+
             } catch (error) {
                 window.alert(error.message);
                 hideLoading();

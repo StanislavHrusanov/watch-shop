@@ -138,6 +138,10 @@
     cursor: pointer;
 }
 
+.confirm-btn p {
+    cursor: pointer;
+}
+
 .purchase-info-container {
     display: flex;
     flex-wrap: wrap;

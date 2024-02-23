@@ -33,6 +33,11 @@ export const getTotalPrice = (arr) => {
     let totalPrice = 0;
 
     for (let el of arr) {
+
+        if (el.watch.quantity < 1) {
+            continue
+        }
+
         totalPrice += el.watch.price * el.qty;
     }
     return totalPrice;
@@ -47,4 +52,24 @@ export const checkAvailability = (user) => {
     }
 
     return true;
+}
+
+export const getWatchesForOrder = (arr) => {
+    const watches = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].qty === 0) {
+            continue;
+        }
+
+        const watch = {
+            _id: arr[i].watch._id,
+            title: arr[i].watch.title,
+            price: arr[i].watch.price,
+            quantity: arr[i].qty,
+            imageUrl: arr[i].watch.imageUrl
+        };
+        watches.push(watch);
+    }
+    return watches;
 }

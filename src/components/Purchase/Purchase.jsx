@@ -6,9 +6,11 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { LoadingContext } from "../../contexts/LoadingContext";
 import { UserProfileContext } from "../../contexts/UserProfileContext";
 import * as myProfileService from "../../services/myProfileService";
+import * as orderService from "../../services/orderService";
 import * as utils from "../../utils";
 
 function Purchase() {
+    const [order, setOrder] = useState({});
     const [isPurchaseMade, setIsPurchaseMade] = useState(false);
     const { user } = useContext(AuthContext);
     const { userInfo, setUserInfo } = useContext(UserProfileContext);
@@ -30,13 +32,49 @@ function Purchase() {
         })();
     }, [showLoading, hideLoading, navigate, setUserInfo, user._id]);
 
+    const onCreateOrder = () => {
+        (async () => {
+            try {
+                showLoading();
+                const userInfoBeforeConfirmation = await myProfileService.getUserInfo(user._id);
+
+                if (!utils.checkAvailability(userInfoBeforeConfirmation)) {
+
+                    const userInfoWithcheckedAvailability = await myProfileService.updateUserCart(user._id);
+                    setUserInfo(userInfoWithcheckedAvailability);
+                    throw new Error('Недостатъчна наличност на някой от часовницие!');
+                }
+
+                const createdOrder = await orderService.createOrder({
+                    buyer: user._id,
+                    items: utils.getWatchesForOrder(userInfo.cart),
+                    totalPrice: utils.getTotalPrice(userInfo.cart)
+                });
+
+                setOrder(createdOrder);
+                setIsPurchaseMade(true);
+                await myProfileService.cleanUserCart(user._id);
+                setUserInfo(state => ({
+                    ...state,
+                    cart: []
+                }));
+                hideLoading();
+
+            } catch (error) {
+                window.alert(error.message);
+                hideLoading();
+                return navigate('/cart');
+            }
+        })();
+    }
+
     return isLoading
         ? (
             <LoadingSpinner />
         ) : isPurchaseMade
             ? (
                 <div className={styles["purchase-info-container"]}>
-                    <p>Успешно направихте поръчка с № 2131231212321</p>
+                    <p>Успешно направихте поръчка с № {order._id}</p>
                     <p>Благодарим Ви!</p>
                     <div className={styles["to-my-purchases"]}>Към моите поръчки</div>
                 </div>
@@ -86,7 +124,7 @@ function Purchase() {
                                 <span>{utils.getTotalPrice(userInfo.cart)} лв.</span>
                             </div>
                             <div className={styles["confirm-btn"]}>
-                                <p>Потвърди и плати</p>
+                                <p onClick={onCreateOrder}>Потвърди и плати</p>
                             </div>
                         </div>
                     </div>
