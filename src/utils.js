@@ -37,3 +37,14 @@ export const getTotalPrice = (arr) => {
     }
     return totalPrice;
 }
+
+export const checkAvailability = (user) => {
+
+    for (let item of user.cart) {
+        if (item.watch.quantity < item.qty) {
+            return false;
+        }
+    }
+
+    return true;
+}
