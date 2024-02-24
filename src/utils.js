@@ -34,10 +34,10 @@ export const getTotalPrice = (arr) => {
 
     for (let el of arr) {
 
-        if (el.watch.quantity < 1) {
+        if(el.watch.quantity<1){
             continue
         }
-
+        
         totalPrice += el.watch.price * el.qty;
     }
     return totalPrice;
