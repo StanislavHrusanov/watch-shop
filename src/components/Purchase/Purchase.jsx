@@ -1,5 +1,5 @@
 import styles from "./Purchase.module.css";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -17,21 +17,6 @@ function Purchase() {
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        (async () => {
-            try {
-                showLoading();
-                const freshUserInfo = await myProfileService.getUserInfo(user._id);
-                setUserInfo(freshUserInfo);
-                hideLoading();
-            } catch (error) {
-                window.alert(error.message);
-                hideLoading();
-                return navigate('/cart');
-            }
-        })();
-    }, [showLoading, hideLoading, navigate, setUserInfo, user._id]);
-
     const onCreateOrder = () => {
         (async () => {
             try {
@@ -42,7 +27,7 @@ function Purchase() {
 
                     const userInfoWithcheckedAvailability = await myProfileService.updateUserCart(user._id);
                     setUserInfo(userInfoWithcheckedAvailability);
-                    throw new Error('Недостатъчна наличност на някой от часовницие!');
+                    throw new Error('Недостатъчна наличност на някой от часовниците!');
                 }
 
                 const createdOrder = await orderService.createOrder({

@@ -1,10 +1,8 @@
 import styles from "./Cart.module.css";
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import WatchInCart from "./WatchInCart/WatchInCart";
 import { AuthContext } from "../../contexts/AuthContext";
-import { LoadingContext } from "../../contexts/LoadingContext";
 import { UserProfileContext } from "../../contexts/UserProfileContext";
 import * as watchService from "../../services/watchService";
 import * as myProfileService from "../../services/myProfileService";
@@ -13,24 +11,7 @@ import * as utils from "../../utils";
 function Cart() {
     const { user } = useContext(AuthContext);
     const { userInfo, setUserInfo } = useContext(UserProfileContext);
-    const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        (async () => {
-            try {
-                showLoading();
-                const freshUserInfo = await myProfileService.getUserInfo(user._id);
-                setUserInfo(freshUserInfo);
-                hideLoading();
-
-            } catch (error) {
-                window.alert(error.message);
-                hideLoading();
-                return navigate('/cart');
-            }
-        })();
-    }, [showLoading, hideLoading, navigate, setUserInfo, user._id]);
 
     const increaseQty = async (watch) => {
         try {
@@ -91,52 +72,48 @@ function Cart() {
         }
     }
 
-    return isLoading
-        ? (
-            <LoadingSpinner />
-        )
-        : (
-            <div className={styles["container"]}>
-                <h3>Количка</h3>
-                {
-                    userInfo.cart.length > 0
-                        ? <div className={styles["row"]}>
-                            <div className={styles["items-box"]}>
-                                {userInfo.cart.map((x) => {
-                                    return (
-                                        <WatchInCart
-                                            key={x._id}
-                                            watch={x.watch}
-                                            qty={x.qty}
-                                            increaseQty={increaseQty}
-                                            onDecreaseQty={onDecreaseQty}
-                                            onRemoveFromCart={onRemoveFromCart}
-                                        />
-                                    )
-                                })}
+    return (
+        <div className={styles["container"]}>
+            <h3>Количка</h3>
+            {
+                userInfo.cart.length > 0
+                    ? <div className={styles["row"]}>
+                        <div className={styles["items-box"]}>
+                            {userInfo.cart.map((x) => {
+                                return (
+                                    <WatchInCart
+                                        key={x._id}
+                                        watch={x.watch}
+                                        qty={x.qty}
+                                        increaseQty={increaseQty}
+                                        onDecreaseQty={onDecreaseQty}
+                                        onRemoveFromCart={onRemoveFromCart}
+                                    />
+                                )
+                            })}
+                        </div>
+                        <div className={styles["cart-summary-proceed-box"]}>
+                            <div className={styles["cart-summary-box"]}>
+                                <h4>Преглед на поръчка</h4>
+                                <p className={styles["items-price"]}>Стойност на продуктите: {utils.getTotalPrice(userInfo.cart)} лв.</p>
+                                <p className={styles["total"]}>Тотал: {utils.getTotalPrice(userInfo.cart)} лв.</p>
                             </div>
-                            <div className={styles["cart-summary-proceed-box"]}>
-                                <div className={styles["cart-summary-box"]}>
-                                    <h4>Преглед на поръчка</h4>
-                                    <p className={styles["items-price"]}>Стойност на продуктите: {utils.getTotalPrice(userInfo.cart)} лв.</p>
-                                    <p className={styles["total"]}>Тотал: {utils.getTotalPrice(userInfo.cart)} лв.</p>
-                                </div>
-                                <div className={styles["proceed-to-checkout-box"]}>
-                                    <div className={styles["proceed-to-checkout"]}>
-                                        <Link className={styles["next-step"]} to="/purchase">Следваща стъпка</Link>
-                                    </div>
+                            <div className={styles["proceed-to-checkout-box"]}>
+                                <div className={styles["proceed-to-checkout"]}>
+                                    <Link className={styles["next-step"]} to="/purchase">Следваща стъпка</Link>
                                 </div>
                             </div>
                         </div>
-                        : <div className={styles["no-watches-container"]}>
-                            <p className={styles["no-watches-message"]}>
-                                Все още няма  добавени часовници в количката!
-                            </p>
-                        </div>
-                }
+                    </div>
+                    : <div className={styles["no-watches-container"]}>
+                        <p className={styles["no-watches-message"]}>
+                            Все още няма  добавени часовници в количката!
+                        </p>
+                    </div>
+            }
 
-            </div>
-        );
+        </div>
+    );
 }
 
 export default Cart;

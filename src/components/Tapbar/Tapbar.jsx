@@ -33,11 +33,11 @@ function Tapbar() {
                     <div className={styles["col-2"]}>
                         <Link className={styles["btn"]} to="/wishlist">
                             <i className="fas fa-heart text-primary"></i>
-                            <span className={styles["badge"]}>{userInfo.wishlist.length}</span>
+                            <span className={styles["badge"]}>{userInfo.wishlist ? userInfo.wishlist.length : 0}</span>
                         </Link>
                         <Link className={styles["btn"]} to='/cart'>
                             <i className="fas fa-shopping-cart text-primary"></i>
-                            <span className={styles["badge"]}>{utils.getSum(userInfo.cart)}</span>
+                            <span className={styles["badge"]}>{userInfo.cart ? utils.getSum(userInfo.cart) : 0}</span>
                         </Link>
                     </div>
                 }
@@ -46,11 +46,11 @@ function Tapbar() {
                     <div className={styles["col-2"]}>
                         <Link className={styles["btn"]} to="/login">
                             <i className="fas fa-heart text-primary"></i>
-                            <span className={styles["badge"]}>{userInfo.wishlist.length}</span>
+                            <span className={styles["badge"]}>{userInfo.wishlist ? userInfo.wishlist.length : 0}</span>
                         </Link>
                         <Link className={styles["btn"]} to='/login'>
                             <i className="fas fa-shopping-cart text-primary"></i>
-                            <span className={styles["badge"]}>{utils.getSum(userInfo.cart)}</span>
+                            <span className={styles["badge"]}>{userInfo.cart ? utils.getSum(userInfo.cart) : 0}</span>
                         </Link>
                     </div>
                 }
