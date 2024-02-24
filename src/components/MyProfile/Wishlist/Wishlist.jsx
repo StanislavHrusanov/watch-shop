@@ -10,7 +10,7 @@ function Wishlist() {
     const { user } = useContext(AuthContext);
     const { userInfo, setUserInfo } = useContext(UserProfileContext);
     const navigate = useNavigate();
-
+    
     const onRemoveFromWishlist = async (watchForRemoving) => {
 
         try {
@@ -31,7 +31,7 @@ function Wishlist() {
             <h3>Любими</h3>
             <div className={styles["row-cards"]}>
                 {
-                    userInfo.wishlist.length > 0
+                    userInfo.wishlist?.length > 0
                         ? userInfo.wishlist.map(x => <WishedWatchCard key={x._id} watch={x} onRemoveFromWishlist={onRemoveFromWishlist} />)
                         : <div className={styles["no-watches-container"]}>
                             <p className={styles["no-watches-message"]}>

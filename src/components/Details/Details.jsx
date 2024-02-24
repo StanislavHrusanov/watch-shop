@@ -149,7 +149,7 @@ function Details() {
                                         <div onClick={addToCart} className={styles["buy-btn"]}>Поръчай</div>
                                         <div
                                             onClick={updateWishlist}
-                                            className={styles[userInfo.wishlist.find(x => x._id === watch._id) ? "wish-btn-added" : "wish-btn"]}
+                                            className={styles[userInfo.wishlist?.find(x => x._id === watch._id) ? "wish-btn-added" : "wish-btn"]}
                                         >
                                             <i className="fas fa-heart text-primary"></i>
                                         </div>

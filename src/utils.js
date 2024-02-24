@@ -22,23 +22,25 @@ export const trimInputs = (inputsObj) => {
 
 export const getSum = (arr) => {
     let sum = 0;
-
-    for (let el of arr) {
-        sum += el.qty;
+    if (arr) {
+        for (let el of arr) {
+            sum += el.qty;
+        }
     }
     return sum;
 }
 
 export const getTotalPrice = (arr) => {
     let totalPrice = 0;
+    if (arr) {
+        for (let el of arr) {
 
-    for (let el of arr) {
+            if (el.watch.quantity < 1) {
+                continue
+            }
 
-        if (el.watch.quantity < 1) {
-            continue
+            totalPrice += el.watch.price * el.qty;
         }
-
-        totalPrice += el.watch.price * el.qty;
     }
     return totalPrice;
 }

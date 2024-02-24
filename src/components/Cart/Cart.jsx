@@ -76,7 +76,7 @@ function Cart() {
         <div className={styles["container"]}>
             <h3>Количка</h3>
             {
-                userInfo.cart.length > 0
+                userInfo.cart?.length > 0
                     ? <div className={styles["row"]}>
                         <div className={styles["items-box"]}>
                             {userInfo.cart.map((x) => {
