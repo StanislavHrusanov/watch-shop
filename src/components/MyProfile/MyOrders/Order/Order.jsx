@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import styles from "./Order.module.css";
+import * as utils from "../../../../utils";
 
 function Order({ order }) {
 
     return (
         <div className={styles["order-box"]}>
             <h4>Поръчка № {order._id}</h4>
-            <p>Статус: {order.status}</p>
-            <p>Дата: {order.createdAt}</p>
+            <p>Статус: {utils.getOrderStatus(order.status)}</p>
+            <p>Дата: {utils.convertDate(order.createdAt)}</p>
             <p>Обща сума: {order.totalPrice} лв.</p>
             <span>Продукти:</span>
             <div className={styles["watches-container"]}>

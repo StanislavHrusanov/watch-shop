@@ -34,10 +34,10 @@ export const getTotalPrice = (arr) => {
 
     for (let el of arr) {
 
-        if(el.watch.quantity<1){
+        if (el.watch.quantity < 1) {
             continue
         }
-        
+
         totalPrice += el.watch.price * el.qty;
     }
     return totalPrice;
@@ -72,4 +72,45 @@ export const getWatchesForOrder = (arr) => {
         watches.push(watch);
     }
     return watches;
+}
+
+export const getOrderStatus = (status) => {
+    if (status === 'Pending') {
+        return 'Обработва се';
+    } else if (status === 'Sent') {
+        return 'Изпратена';
+    }
+}
+
+export const convertDate = (createdAt) => {
+    const dateOfCreation = new Date(createdAt);
+
+    const days = {
+        Mon: 'Понеделник',
+        Tue: 'Вторник',
+        Wed: 'Сряда',
+        Thu: 'Четвъртък',
+        Fri: 'Петък',
+        Sat: 'Събота',
+        Sun: 'Неделя'
+    };
+
+    const months = {
+        Jan: '01',
+        Feb: '02',
+        Mar: '03',
+        Apr: '04',
+        May: '05',
+        Jun: '06',
+        Jul: '07',
+        Aug: '08',
+        Sep: '09',
+        Oct: '10',
+        Nov: '11',
+        Dec: '12'
+    };
+
+    const [day, month, date, year] = dateOfCreation.toDateString().split(' ');
+
+    return `${days[day]}, ${date}.${months[month]}.${year}г.`;
 }
