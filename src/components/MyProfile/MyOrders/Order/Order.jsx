@@ -13,9 +13,12 @@ function Order({ order }) {
             <span>Продукти:</span>
             <div className={styles["watches-container"]}>
                 {
-                    order.items.map(x => {
+                    order.items.map((x) => {
                         return (
                             <Link key={x._id} className={styles["watch-card"]} to={`/watches/${x._id}`}>
+                                <div className={styles["item-qty"]}>
+                                    <span>x{x.quantity}</span>
+                                </div>
                                 <div className={styles["img-box"]}>
                                     <img src={x.imageUrl} alt="" />
                                 </div>
