@@ -1,6 +1,6 @@
 import styles from "./Purchase.module.css";
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { AuthContext } from "../../contexts/AuthContext";
 import { LoadingContext } from "../../contexts/LoadingContext";
@@ -61,7 +61,7 @@ function Purchase() {
                 <div className={styles["purchase-info-container"]}>
                     <p>Успешно направихте поръчка с № {order._id}</p>
                     <p>Благодарим Ви!</p>
-                    <div className={styles["to-my-purchases"]}>Към моите поръчки</div>
+                    <Link className={styles["to-my-purchases"]} to="/myOrders">Към моите поръчки</Link>
                 </div>
             )
             : (
