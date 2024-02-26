@@ -41,7 +41,7 @@ function Navbar() {
                                             user?.isAdmin
                                                 ? <>
                                                     <Link to="/addWatch">Добави часовник</Link>
-                                                    <Link to="/purchases">Поръчки</Link>
+                                                    <Link to="/orders">Поръчки</Link>
                                                 </>
                                                 : <>
                                                     <Link to="/wishlist">Любими</Link>
@@ -79,7 +79,7 @@ function Navbar() {
                                                 user?.isAdmin
                                                     ? <>
                                                         <Link to="/addWatch">Добави часовник</Link>
-                                                        <Link to="/purchases">Поръчки</Link>
+                                                        <Link to="/orders">Поръчки</Link>
                                                     </>
                                                     : <>
                                                         <Link to="/wishlist">Любими</Link>
