@@ -143,7 +143,8 @@
     }
 
     .nav-link {
-        padding: 0 2rem;
+        padding: 0;
+        margin: 0 2rem;
         font-weight: 600;
     }
 
@@ -163,6 +164,7 @@
     }
 
     .nav-link {
-        padding: 0 3rem;
+        padding: 0;
+        margin: 0 3rem;
     }
 }
