@@ -16,7 +16,7 @@ import Wishlist from './components/MyProfile/Wishlist/Wishlist';
 import MyOrders from './components/MyProfile/MyOrders/MyOrders';
 import Cart from './components/Cart/Cart';
 import Purchase from './components/Purchase/Purchase';
-import Purchases from './components/AdminProfile/Purchases';
+import Orders from './components/AdminProfile/Orders/Orders';
 import WatchCatalogType from './components/WatchCatalog/WatchCatalogType/WatchCatalogType';
 import WatchCatalogBrand from './components/WatchCatalog/WatchCatalogBrand/WatchCatalogBrand';
 
@@ -52,7 +52,7 @@ function App() {
                   <Route path='/myOrders' element={<MyOrders />} />
                   <Route path='/cart' element={<Cart />} />
                   <Route path='/purchase' element={<Purchase />} />
-                  <Route path='/purchases' element={<Purchases />} />
+                  <Route path='/orders' element={<Orders />} />
 
                 </Routes>
               </div>
