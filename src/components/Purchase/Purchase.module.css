@@ -170,3 +170,17 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+.no-watches-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 320px;
+}
+
+.no-watches-message {
+    font-size: 1.2rem;
+    text-shadow: 0.5px 0.5px 0.5px black;
+    color: #fd4f0c;
+}
