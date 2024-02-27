@@ -6,12 +6,15 @@ import { LoadingContext } from "../../contexts/LoadingContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import * as authService from "../../services/authService";
 import { trimInputs } from "../../utils";
+import * as validation from "../../validation";
 
 function Login() {
     const [inputs, setInputs] = useState({
         email: '',
         password: ''
     });
+
+    const [errors, setErrors] = useState({});
 
     const { userLogin } = useContext(AuthContext);
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
@@ -26,6 +29,12 @@ function Login() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        for (let key in errors) {
+            if (errors[key]) {
+                return;
+            }
+        }
 
         try {
             showLoading();
@@ -59,8 +68,14 @@ function Login() {
                                 placeholder="Имейл адрес"
                                 value={inputs.email}
                                 onChange={onChangeHandler}
+                                onBlur={(e) => validation.minLength(e, setErrors)}
                             />
                         </div>
+                        {errors.email &&
+                            <div className={styles["error-msg"]}>
+                                Имейл адресът е задължителен!
+                            </div>
+                        }
                         <div className={styles["input"]}>
                             <input
                                 type="password"
@@ -69,8 +84,14 @@ function Login() {
                                 placeholder="Парола"
                                 value={inputs.password}
                                 onChange={onChangeHandler}
+                                onBlur={(e) => validation.minLength(e, setErrors)}
                             />
                         </div>
+                        {errors.password &&
+                            <div className={styles["error-msg"]}>
+                                Паролата е задължителна!
+                            </div>
+                        }
                         <div className={styles["action"]}>
                             <input type="submit" value="Влез"></input>
                         </div>

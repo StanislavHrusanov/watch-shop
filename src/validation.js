@@ -47,3 +47,11 @@ export const isDifferentThanDigit = (e, setError) => {
         [e.target.name]: !e.target.value.match(pattern)
     }));
 }
+
+export const minLength = (e, setError) => {
+    const pattern = /\S+/g;
+    setError(state => ({
+        ...state,
+        [e.target.name]: !pattern.test(e.target.value)
+    }));
+}
