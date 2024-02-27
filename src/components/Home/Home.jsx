@@ -53,7 +53,7 @@ function Home() {
             <div className={styles["container"]}>
                 <div className={styles["row-banner"]}>
                     <img className={styles["first-banner"]} src="https://res.cloudinary.com/doyfjnyvo/image/upload/v1706691405/watches/atomic-age-vk64-640c699-leather-black-art-1_q5at0f.jpg" alt="" />
-                    <p>Виж всички модели</p>
+                    <Link to='/watches/brands/Vostok Europe'>Виж всички модели</Link>
                 </div>
                 <h3>Ново от Vostok-Europe</h3>
                 <div className={styles["row-cards"]}>
@@ -74,7 +74,7 @@ function Home() {
                 </div>
                 <div className={styles["row-banner"]}>
                     <img className={styles["first-banner"]} src="https://res.cloudinary.com/doyfjnyvo/image/upload/v1706694407/watches/Seiko-Prospex-SRPC49K-slider.jpg_tpjzfk.webp" alt="" />
-                    <p>Виж всички модели</p>
+                    <Link to='/watches/brands/Seiko'>Виж всички модели</Link>
                 </div>
                 <h3>Ново от Seiko</h3>
                 <div className={styles["row-cards"]}>
@@ -87,7 +87,7 @@ function Home() {
                     Датиращ от древни векове, този метод е използван като израз на висша почит, специално отношение и внимание, отправени към важен човек в живота на някой. </p>
                 <div className={styles["row-banner"]}>
                     <img className={styles["graving-banner"]} src="https://res.cloudinary.com/doyfjnyvo/image/upload/v1706701873/watches/laserEngraving_p1jubz.webp" alt="" />
-                    <p>Виж повече</p>
+                    <Link>Виж повече</Link>
                 </div>
                 <h3>Последните ни предложения</h3>
                 <div className={styles["row-cards"]}>

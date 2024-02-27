@@ -53,7 +53,7 @@
     object-fit: cover;
 }
 
-.row-banner p {
+.row-banner a {
     position: absolute;
     padding: 4px 8px;
     bottom: 5px;
@@ -63,6 +63,7 @@
     text-shadow: 0.5px 0.5px 0.5px black;
     background-color: #383d3d;
     color: #fd4f0c;
+    text-decoration: none;
     cursor: pointer;
 }
 
