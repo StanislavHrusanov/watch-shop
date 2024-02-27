@@ -90,3 +90,12 @@
 .no-reg a {
     color: #fd4f0c;
 }
+
+.error-msg {
+    color: #fd4f0c;
+    margin-top: -20px;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    text-align: left;
+    align-self: self-start;
+}

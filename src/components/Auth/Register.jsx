@@ -6,6 +6,7 @@ import { LoadingContext } from "../../contexts/LoadingContext";
 import { AuthContext } from "../../contexts/AuthContext";
 import * as authService from "../../services/authService";
 import { trimInputs } from "../../utils";
+import * as validation from "../../validation";
 
 function Register() {
     const [inputs, setInputs] = useState({
@@ -17,6 +18,7 @@ function Register() {
         address: '',
         phoneNumber: ''
     });
+    const [errors, setErrors] = useState({});
 
     const { userLogin } = useContext(AuthContext);
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
@@ -31,6 +33,12 @@ function Register() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+
+        for (let key in errors) {
+            if (errors[key]) {
+                return;
+            }
+        }
 
         try {
             showLoading();
@@ -64,8 +72,14 @@ function Register() {
                                 placeholder="Име"
                                 value={inputs.firstName}
                                 onChange={onChangeHandler}
+                                onBlur={(e) => validation.isValidName(e, setErrors)}
                             />
                         </div>
+                        {errors.firstName &&
+                            <div className={styles["error-msg"]}>
+                                Името трябва да започва с главна буква и да се състои само от букви на кирилица или латиница!
+                            </div>
+                        }
                         <div className={styles["input"]}>
                             <input
                                 type="text"
@@ -74,8 +88,14 @@ function Register() {
                                 placeholder="Фамилия"
                                 value={inputs.lastName}
                                 onChange={onChangeHandler}
+                                onBlur={(e) => validation.isValidName(e, setErrors)}
                             />
                         </div>
+                        {errors.lastName &&
+                            <div className={styles["error-msg"]}>
+                                Фамилията трябва да започва с главна буква и да се състои само от букви на кирилица или латиница!
+                            </div>
+                        }
                         <div className={styles["input"]}>
                             <input
                                 type="password"
@@ -84,8 +104,14 @@ function Register() {
                                 placeholder="Парола"
                                 value={inputs.password}
                                 onChange={onChangeHandler}
+                                onBlur={(e) => validation.minLengthRegister(e, setErrors, 6)}
                             />
                         </div>
+                        {errors.password &&
+                            <div className={styles["error-msg"]}>
+                                Паролата трябва да съдържа поне 6 символа различни от интервал!
+                            </div>
+                        }
                         <div className={styles["input"]}>
                             <input
                                 type="password"
@@ -94,8 +120,14 @@ function Register() {
                                 placeholder="Повтори парола"
                                 value={inputs.repass}
                                 onChange={onChangeHandler}
+                                onBlur={(e) => validation.isPaswordsMatch(e, inputs.password, setErrors)}
                             />
                         </div>
+                        {errors.repass &&
+                            <div className={styles["error-msg"]}>
+                                Паролите не съвпадат!
+                            </div>
+                        }
                         <div className={styles["input"]}>
                             <input
                                 type="text"
@@ -104,8 +136,14 @@ function Register() {
                                 placeholder="Имейл адрес"
                                 value={inputs.email}
                                 onChange={onChangeHandler}
+                                onBlur={(e) => validation.isValidEmail(e, setErrors)}
                             />
                         </div>
+                        {errors.email &&
+                            <div className={styles["error-msg"]}>
+                                Невалиден имейл адрес!
+                            </div>
+                        }
                         <div className={styles["input"]}>
                             <input
                                 type="text"
@@ -114,8 +152,14 @@ function Register() {
                                 placeholder="Адрес"
                                 value={inputs.address}
                                 onChange={onChangeHandler}
+                                onBlur={(e) => validation.isDifferentThanEmptySymbol(e, setErrors)}
                             />
                         </div>
+                        {errors.address &&
+                            <div className={styles["error-msg"]}>
+                                Адресът е задължителен!
+                            </div>
+                        }
                         <div className={styles["input"]}>
                             <input
                                 type="text"
@@ -124,8 +168,14 @@ function Register() {
                                 placeholder="Телефон"
                                 value={inputs.phoneNumber}
                                 onChange={onChangeHandler}
+                                onBlur={(e) => validation.isDifferentThanDigit(e, setErrors)}
                             />
                         </div>
+                        {errors.phoneNumber &&
+                            <div className={styles["error-msg"]}>
+                                Телефонът е задължителен и трябва да е съставен само от цифри!
+                            </div>
+                        }
                         <div className={styles["action"]}>
                             <input type="submit" value="Създай профил"></input>
                         </div>
