@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -2rem;
+    padding-right: 15px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.wrapper {
+    width: calc(100% - 30px);
+    height: 80vh;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    background-color: #fd4f0c;
+    opacity: 0.5;
+    z-index: 111;
+}
+
+.container img {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    position: absolute;
+    z-index: 1111;
+}
+
+.message p {
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1f1e1e;
+    text-shadow: 0.5px 0.5px 0.5px black;
+}
+
+.message a {
+    padding: 0.5rem;
+    background-color: #1f1e1e;
+    color: #fd4f0c;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-shadow: 0.5px 0.5px 0.5px black;
+    text-decoration: none;
+}
