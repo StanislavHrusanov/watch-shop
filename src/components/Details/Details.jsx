@@ -185,7 +185,7 @@ function Details() {
                                     </tr>
                                     <tr>
                                         <td>Водоустойчивост</td>
-                                        <td>{watch.waterResistance}АТМ</td>
+                                        <td>{watch.waterResistance}</td>
                                     </tr>
                                     <tr>
                                         <td>Диаметър</td>
