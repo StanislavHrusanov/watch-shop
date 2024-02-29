@@ -1,4 +1,4 @@
-const host = 'http://localhost:3001';
+const host = 'https://yellow-rattlesnake-tam.cyclic.app';
 
 async function request(method, url, data) {
     const options = {
