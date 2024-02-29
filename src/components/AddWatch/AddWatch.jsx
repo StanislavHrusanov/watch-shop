@@ -136,7 +136,7 @@ function AddWatch() {
                         }
                         <div className={styles["input"]}>
                             <input
-                                type="text"
+                                type="number"
                                 name="price"
                                 id="price"
                                 placeholder="Цена"
