@@ -13,7 +13,7 @@ function Navbar() {
         <div className={styles["container"]}>
             <div className={styles["row"]}>
                 <div className={styles["col"]}>
-                    <Link className={styles["text-decoration-none"]}>
+                    <Link className={styles["text-decoration-none"]} to="/">
                         <h1 className={styles["title"]}>watch-shop.bg</h1>
                     </Link>
                 </div>
