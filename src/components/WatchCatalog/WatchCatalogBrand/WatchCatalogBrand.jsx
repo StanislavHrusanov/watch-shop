@@ -5,11 +5,9 @@ import Watch from "../Watch/Watch";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import * as watchService from "../../../services/watchService";
 import { LoadingContext } from "../../../contexts/LoadingContext";
-import { PageContext } from "../../../contexts/PageContext";
 
 function WatchCatalogBrand() {
     const [watches, setWatches] = useState([]);
-    const [watchCount, setWatchCount] = useState(1);
     const [page, setPage] = useState(1);
     const [limit] = useState(4);
     const [pages, setPages] = useState(1);
@@ -18,28 +16,24 @@ function WatchCatalogBrand() {
     const { brand } = useParams();
 
     const { isLoading, showLoading, hideLoading } = useContext(LoadingContext);
-    const { watchBrand, setWatchBrand, watchType, setWatchType } = useContext(PageContext);
     const navigate = useNavigate();
+
+    const url = new URL(window.location.href);
+    const pageQuery = url.searchParams.get('page');
+    const filterQuery = url.searchParams.get('type');
+    const sortQuery = url.searchParams.get('sortedBy');
 
     useEffect(() => {
         (async () => {
             try {
                 showLoading();
                 const allWatches = await watchService.getWatchesByBrandPaginated(brand, type, sortCriteria, page, limit);
-                const allWatchesCount = await watchService.getWatchesCount(type, brand);
+                const allWatchesCount = await watchService.getWatchesCount(type, brand, '');
                 setWatches(allWatches);
-                setWatchCount(allWatchesCount);
-                setPages(state => Math.ceil(watchCount / limit) ? state = Math.ceil(watchCount / limit) : state = 1);
-                // setPage(state => brand === watchBrand ? state : 1);
-                setPage((state) => {
-                    if (type !== watchType || brand !== watchBrand) {
-                        setSortCriteria('newest');
-                        return 1;
-                    }
-                    return state;
-                });
-                setWatchType(type);
-                setWatchBrand(brand);
+                setPages(Math.ceil(allWatchesCount / limit) || 1);
+                setPage(pageQuery ? Number(pageQuery) : 1);
+                setType(filterQuery || 'all');
+                setSortCriteria(sortQuery || 'newest');
                 hideLoading();
 
             } catch (error) {
@@ -55,32 +49,54 @@ function WatchCatalogBrand() {
         brand,
         page,
         limit,
-        watchCount,
-        watchBrand,
-        setWatchBrand,
         sortCriteria,
         type,
-        setWatchType,
-        watchType
+        filterQuery,
+        sortQuery,
+        pageQuery
     ]);
 
     const onSort = (criteria) => {
-        setSortCriteria(criteria)
+        if (filterQuery) {
+            navigate(`?type=${filterQuery}&sortedBy=${criteria}`);
+        } else {
+            navigate(`?sortedBy=${criteria}`);
+        }
     }
 
     const onFilter = (criteria) => {
-        setType(criteria);
+        if (sortQuery) {
+            navigate(`?type=${criteria}&sortedBy=${sortQuery}`);
+        } else {
+            navigate(`?&type=${criteria}`);
+        }
     }
 
     const prevPage = () => {
         if (page > 1) {
-            setPage(state => state - 1);
+            if (filterQuery && sortQuery) {
+                navigate(`?type=${filterQuery}&sortedBy=${sortQuery}&page=${page - 1}`);
+            } else if (filterQuery) {
+                navigate(`?type=${filterQuery}&page=${page - 1}`);
+            } else if (sortQuery) {
+                navigate(`?sortedBy=${sortQuery}&page=${page - 1}`);
+            } else {
+                navigate(`?page=${page - 1}`);
+            }
         }
     }
 
     const nextPage = () => {
         if (page < pages) {
-            setPage(state => state + 1);
+            if (filterQuery && sortQuery) {
+                navigate(`?type=${filterQuery}&sortedBy=${sortQuery}&page=${page + 1}`);
+            } else if (filterQuery) {
+                navigate(`?type=${filterQuery}&page=${page + 1}`);
+            } else if (sortQuery) {
+                navigate(`?sortedBy=${sortQuery}&page=${page + 1}`);
+            } else {
+                navigate(`?page=${page + 1}`);
+            }
         }
     }
 
@@ -98,7 +114,6 @@ function WatchCatalogBrand() {
                             onChange={(e) => onFilter(e.target.value)}
                             value={type}
                         >
-                            <option value=""></option>
                             <option value="all">Всички</option>
                             <option value="men">Мъжки</option>
                             <option value="women">Дамски</option>
@@ -110,7 +125,6 @@ function WatchCatalogBrand() {
                             onChange={(e) => onSort(e.target.value)}
                             value={sortCriteria}
                         >
-                            <option value=""></option>
                             <option value="newest">Най-нови</option>
                             <option value="lowestPrice">Най-ниска цена</option>
                             <option value="highestPrice">Най-висока цена</option>
