@@ -23,7 +23,6 @@ import NotFound from './components/NotFound/NotFound';
 import Search from './components/Search/Search';
 
 import { LoadingProvider } from './contexts/LoadingContext';
-import { PageProvider } from './contexts/PageContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { UserProfileProvider } from './contexts/UserProfileContext';
 import { AlreadyLoggedIn } from './components/RoutGuards/AlreadyLoggedIn';
@@ -35,60 +34,58 @@ function App() {
   return (
     <div className={styles["app"]}>
       <LoadingProvider>
-        <PageProvider>
-          <AuthProvider>
-            <UserProfileProvider>
-              <Tapbar />
-              <Navbar />
-              <div className={styles["container"]}>
+        <AuthProvider>
+          <UserProfileProvider>
+            <Tapbar />
+            <Navbar />
+            <div className={styles["container"]}>
 
-                <Routes>
+              <Routes>
 
-                  <Route path='/' element={<Home />} />
-                  <Route path='/watches' element={<WatchCatalog />} />
-                  <Route path='/watches/types/:type' element={<WatchCatalogType />} />
-                  <Route path='/watches/brands/:brand' element={<WatchCatalogBrand />} />
-                  <Route path='/watches/:watchId' element={<Details />} />
-                  <Route path='/search' element={<Search />} />
+                <Route path='/' element={<Home />} />
+                <Route path='/watches' element={<WatchCatalog />} />
+                <Route path='/watches/types/:type' element={<WatchCatalogType />} />
+                <Route path='/watches/brands/:brand' element={<WatchCatalogBrand />} />
+                <Route path='/watches/:watchId' element={<Details />} />
+                <Route path='/search' element={<Search />} />
 
-                  <Route element={<AlreadyLoggedIn />}>
+                <Route element={<AlreadyLoggedIn />}>
 
-                    <Route path='/register' element={<Register />} />
-                    <Route path='/login' element={<Login />} />
+                  <Route path='/register' element={<Register />} />
+                  <Route path='/login' element={<Login />} />
 
-                  </Route>
+                </Route>
 
-                  <Route element={<IsGuest />}>
+                <Route element={<IsGuest />}>
 
-                    <Route path='/logout' element={<Logout />} />
+                  <Route path='/logout' element={<Logout />} />
 
-                    <Route element={<IsAdmin />}>
+                  <Route element={<IsAdmin />}>
 
-                      <Route path='/wishlist' element={<Wishlist />} />
-                      <Route path='/cart' element={<Cart />} />
-                      <Route path='/purchase' element={<Purchase />} />
-                      <Route path='/myOrders' element={<MyOrders />} />
-
-                    </Route>
-
-                    <Route element={<IsNormalUser />}>
-
-                      <Route path='/addWatch' element={<AddWatch />} />
-                      <Route path='/watches/:watchId/edit' element={<Edit />} />
-                      <Route path='/orders' element={<Orders />} />
-
-                    </Route>
+                    <Route path='/wishlist' element={<Wishlist />} />
+                    <Route path='/cart' element={<Cart />} />
+                    <Route path='/purchase' element={<Purchase />} />
+                    <Route path='/myOrders' element={<MyOrders />} />
 
                   </Route>
 
-                  <Route path='/*' element={<NotFound />} />
+                  <Route element={<IsNormalUser />}>
 
-                </Routes>
-              </div>
-              <Footer />
-            </UserProfileProvider>
-          </AuthProvider>
-        </PageProvider>
+                    <Route path='/addWatch' element={<AddWatch />} />
+                    <Route path='/watches/:watchId/edit' element={<Edit />} />
+                    <Route path='/orders' element={<Orders />} />
+
+                  </Route>
+
+                </Route>
+
+                <Route path='/*' element={<NotFound />} />
+
+              </Routes>
+            </div>
+            <Footer />
+          </UserProfileProvider>
+        </AuthProvider>
       </LoadingProvider>
     </div>
   );
