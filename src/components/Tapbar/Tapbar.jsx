@@ -1,33 +1,67 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Tapbar.module.css";
 import { AuthContext } from "../../contexts/AuthContext";
 import { UserProfileContext } from "../../contexts/UserProfileContext";
 import * as utils from "../../utils";
 
 function Tapbar() {
+    const [searched, setSearched] = useState({
+        search: ''
+    });
     const { user } = useContext(AuthContext);
     const { userInfo } = useContext(UserProfileContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const onChangeHandler = (e) => {
+        setSearched(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+
+    }
+
+    const search = () => {
+
+        if (searched.search === '') {
+            return;
+        }
+
+        const path = location.pathname;
+
+        if (path === '/search') {
+            navigate(`?searched=${searched.search}`)
+        } else {
+            navigate(`/search?searched=${searched.search}`)
+        }
+    }
 
     return (
         <div className={styles["container"]}>
             <div className={styles["row"]}>
                 <div className={styles["col"]}>
-                    <Link className={styles["text-decoration-none"]}>
+                    <Link className={styles["text-decoration-none"]} to="/">
                         <h1 className={styles["title"]}>watch-shop.bg</h1>
                     </Link>
                 </div>
                 <div className={styles["col-1"]}>
-                    <form action="">
-                        <div className={styles["search"]}>
-                            <input type="text" className={styles["search-input"]} placeholder="Търси" />
-                            <div className={styles["search-input-append"]}>
-                                <span className={styles["search-input-icon"]} >
-                                    <i className="fa fa-search"></i>
-                                </span>
-                            </div>
+                    <div className={styles["search"]}>
+                        <input
+                            type="text"
+                            name="search"
+                            className={styles["search-input"]}
+                            placeholder="Търси"
+                            value={searched.search}
+                            onChange={onChangeHandler}
+                        />
+                        <div className={styles["search-input-append"]}>
+                            <span onClick={search} className={styles["search-input-icon"]}>
+                                <i className="fa fa-search"></i>
+                            </span>
                         </div>
-                    </form>
+                    </div>
                 </div>
                 {user && !user?.isAdmin &&
                     <div className={styles["col-2"]}>

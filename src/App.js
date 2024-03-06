@@ -20,6 +20,7 @@ import Orders from './components/AdminProfile/Orders/Orders';
 import WatchCatalogType from './components/WatchCatalog/WatchCatalogType/WatchCatalogType';
 import WatchCatalogBrand from './components/WatchCatalog/WatchCatalogBrand/WatchCatalogBrand';
 import NotFound from './components/NotFound/NotFound';
+import Search from './components/Search/Search';
 
 import { LoadingProvider } from './contexts/LoadingContext';
 import { PageProvider } from './contexts/PageContext';
@@ -48,6 +49,7 @@ function App() {
                   <Route path='/watches/types/:type' element={<WatchCatalogType />} />
                   <Route path='/watches/brands/:brand' element={<WatchCatalogBrand />} />
                   <Route path='/watches/:watchId' element={<Details />} />
+                  <Route path='/search' element={<Search />} />
 
                   <Route element={<AlreadyLoggedIn />}>
 
