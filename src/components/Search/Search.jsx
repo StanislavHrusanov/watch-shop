@@ -8,7 +8,6 @@ import * as watchService from "../../services/watchService";
 
 function Search() {
     const [watches, setWatches] = useState([]);
-    const [watchCount, setWatchCount] = useState();
     const [page, setPage] = useState(1);
     const [limit] = useState(4);
     const [pages, setPages] = useState(1);
@@ -32,11 +31,10 @@ function Search() {
                 const watchesOnPage = await watchService.getSearched(searchQuery, filterCriteria, sortCriteria, page, limit);
                 const allWatchesCount = await watchService.getWatchesCount(filterCriteria, 'all', searchQuery);
                 setWatches(watchesOnPage);
-                setWatchCount(allWatchesCount);
-                setPages(Math.ceil(watchCount / limit));
+                setPages(Math.ceil(allWatchesCount / limit) || 1);
                 setPage(pageQuery ? Number(pageQuery) : 1);
-                setFilterCriteria(filterQuery ? filterQuery : 'all');
-                setSortCriteria(sortQuery ? sortQuery : 'newest');
+                setFilterCriteria(filterQuery || 'all');
+                setSortCriteria(sortQuery || 'newest');
                 hideLoading();
 
             } catch (error) {
@@ -45,7 +43,19 @@ function Search() {
                 navigate('/watches');
             }
         })();
-    }, [showLoading, hideLoading, navigate, page, limit, watchCount, filterCriteria, sortCriteria, searchQuery, pageQuery, filterQuery, sortQuery]);
+    }, [
+        showLoading,
+        hideLoading,
+        navigate,
+        page,
+        limit,
+        filterCriteria,
+        sortCriteria,
+        searchQuery,
+        pageQuery,
+        filterQuery,
+        sortQuery
+    ]);
 
     const onSort = (criteria) => {
 
@@ -141,7 +151,7 @@ function Search() {
                 <div className={styles["pagination"]}>
                     <div onClick={prevPage} className={styles["prev"]}><i className="fa fa-chevron-left"></i></div>
                     <div className={styles["pages"]}>
-                        <div>{page} от {pages ? pages : 1}</div>
+                        <div>{page} от {pages}</div>
                     </div>
                     <div onClick={nextPage} className={styles["next"]}><i className="fa fa-chevron-right"></i></div>
                 </div>
