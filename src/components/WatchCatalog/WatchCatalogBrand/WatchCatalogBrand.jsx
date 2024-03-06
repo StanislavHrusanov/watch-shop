@@ -68,7 +68,7 @@ function WatchCatalogBrand() {
         if (sortQuery) {
             navigate(`?type=${criteria}&sortedBy=${sortQuery}`);
         } else {
-            navigate(`?&type=${criteria}`);
+            navigate(`?type=${criteria}`);
         }
     }
 
