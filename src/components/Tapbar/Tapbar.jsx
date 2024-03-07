@@ -6,8 +6,10 @@ import { UserProfileContext } from "../../contexts/UserProfileContext";
 import * as utils from "../../utils";
 
 function Tapbar() {
-    const [searched, setSearched] = useState({
-        search: ''
+    const [searched, setSearched] = useState(() => {
+        const inputSearch = new URL(window.location.href).searchParams.get('searched') || '';
+
+        return inputSearch;
     });
     const { user } = useContext(AuthContext);
     const { userInfo } = useContext(UserProfileContext);
@@ -16,25 +18,21 @@ function Tapbar() {
     const location = useLocation();
 
     const onChangeHandler = (e) => {
-        setSearched(state => ({
-            ...state,
-            [e.target.name]: e.target.value
-        }));
-
+        setSearched(e.target.value);
     }
 
     const search = () => {
 
-        if (searched.search === '') {
+        if (searched === '') {
             return;
         }
 
         const path = location.pathname;
 
         if (path === '/search') {
-            navigate(`?searched=${searched.search}`)
+            navigate(`?searched=${searched}`)
         } else {
-            navigate(`/search?searched=${searched.search}`)
+            navigate(`/search?searched=${searched}`)
         }
     }
 
@@ -53,11 +51,14 @@ function Tapbar() {
                             name="search"
                             className={styles["search-input"]}
                             placeholder="Търси"
-                            value={searched.search}
+                            value={searched}
                             onChange={onChangeHandler}
                         />
-                        <div className={styles["search-input-append"]}>
-                            <span onClick={search} className={styles["search-input-icon"]}>
+                        {searched.length > 0 &&
+                            <span onClick={() => setSearched('')} className={styles["btn-close"]}>X</span>
+                        }
+                        <div onClick={search} className={styles["search-input-append"]}>
+                            <span className={styles["search-input-icon"]}>
                                 <i className="fa fa-search"></i>
                             </span>
                         </div>
