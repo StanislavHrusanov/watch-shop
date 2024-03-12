@@ -55,7 +55,7 @@ function Home() {
                     <img className={styles["first-banner"]} src="https://res.cloudinary.com/doyfjnyvo/image/upload/v1706691405/watches/atomic-age-vk64-640c699-leather-black-art-1_q5at0f.jpg" alt="" />
                     <Link to='/watches/brands/Vostok Europe'>Виж всички модели</Link>
                 </div>
-                <h3>Ново от Vostok-Europe</h3>
+                <h3>Ново от Vostok Europe</h3>
                 <div className={styles["row-cards"]}>
 
                     {firstRowWathes.map(x => <WatchCard key={x._id} watch={x} />)}
