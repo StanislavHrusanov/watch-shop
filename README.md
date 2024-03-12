@@ -53,6 +53,8 @@ The owner of the online store can add new watches or edit already existing once,
     <hr/>
     <img src="./screenshots/Screenshot (229).png"/>
     <hr/>
+    <img src="./screenshots/Screenshot (230).png"/>
+    <hr/>
 <p>
 
 **Features of the app**
