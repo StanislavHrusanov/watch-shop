@@ -9,7 +9,7 @@ import { LoadingContext } from "../../../contexts/LoadingContext";
 function WatchCatalogBrand() {
     const [watches, setWatches] = useState([]);
     const [page, setPage] = useState(1);
-    const [limit] = useState(4);
+    const [limit] = useState(12);
     const [pages, setPages] = useState(1);
     const [type, setType] = useState('all');
     const [sortCriteria, setSortCriteria] = useState('newest');
