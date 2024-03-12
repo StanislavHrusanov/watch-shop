@@ -1,6 +1,6 @@
 <h1 align="center"><i>WATCH-SHOP.BG</i></h1>
 
-<p align="center"> WATCH-SHOP.BG is an online store where anyone can browse and order watches. Every registered user can add watches to wishlist, to check his orders' details and status.
+<p align="center"> WATCH-SHOP.BG is an online store created with React where anyone can browse and order watches. Every registered user can add watches to wishlist, to check his orders' details and status.
 The owner of the online store can add new watches or edit already existing once, to check orders and change their status.
 <hr/>
 
