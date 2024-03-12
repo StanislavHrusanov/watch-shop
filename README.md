@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+<h1 align="center"><i>WATCH-SHOP.BG</i></h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center"> WATCH-SHOP.BG is an online store where anyone can browse and order watches. Every registered user can add watches to wishlist, to check his orders' details and status.
+The owner of the online store can add new watches or edit already existing once, to check orders and change their status.
+<hr/>
 
-## Available Scripts
+<p align="center">
+    <img src="./screenshots/Screenshot (206).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (207).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (208).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (209).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (210).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (211).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (212).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (213).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (214).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (215).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (216).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (217).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (218).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (219).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (220).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (221).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (222).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (223).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (224).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (225).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (226).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (227).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (228).png"/>
+    <hr/>
+    <img src="./screenshots/Screenshot (229).png"/>
+    <hr/>
+<p>
 
-In the project directory, you can run:
+**Features of the app**
 
-### `npm start`
+<hr/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<b>Home page with two main brands, all offered brands and last added watches</b>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<b>Register and Login page with validations - only for logged out users</b>
 
-### `npm test`
+<b>Watch catalog page with pagination, filter by type and sort by criteria</b>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<b>Men watches catalog page with pagination and sort by criteria</b>
 
-### `npm run build`
+<b>Women watches catalog page with pagination and sort by criteria</b>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<b>Page with watches of specific brand with pagination, filter by type and sort by criteria</b>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<b>Page with searched watches with pagination, filter by type and sort by criteria</b>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<b>Details page with image of watch, price and technical data of it</b>
 
-### `npm run eject`
+- <i>Edit watch - only for the admin</i>
+- <i>Delete watch - only for the admin</i>
+- <i>Add to wishlist/Remove from wishlist - only for logged in user differnet than admin</i>
+- <i>Add to cart - only for logged in user differnet than admin</i>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<b>Edit watch page with validations - only for admin</b>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<b>My profile - only for logged in users</b>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- <i>Wishlist page - only for registered user different than admin</i>
+- <i>My orders page - only for registered user different than admin</i>
+- <i>Add watch page with validations - only for admin</i>
+- <i>Orders page with possibility to change order status from `Pending` to `Sent` - only for admin</i>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<b>Cart page with all watches which is added to cart with number of available watches and possibility to change count of spesific watch - only for registered user different than admin</b>
 
-## Learn More
+<b>Purchase page with user details and sum of the purchase and button to confirm and pay - only for registered user different than admin</b>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<b>The repository includes only "Front-end" of the app, "Back-end" is also mine and can be seen here: <a href="https://github.com/StanislavHrusanov/watch-shop-rest-api"/>watch-shop-rest-api</b>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h2>The app is hosted at <a href="https://watch-shop-rjsm.onrender.com/"/>https://watch-shop-rjsm.onrender.com/</h2>
