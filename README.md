@@ -95,4 +95,10 @@ The owner of the online store can add new watches or edit already existing once,
 
 <b>The repository includes only "Front-end" of the app, "Back-end" is also mine and can be seen here: <a href="https://github.com/StanislavHrusanov/watch-shop-rest-api"/>watch-shop-rest-api</b>
 
+<h2>Here is two accounts, admin and user</h2>
+
+-<i>Email: admin@abv.bg, password:111111</i>
+
+-<i>Email: test@abv.bg, password:111111</i>
+
 <h2>The app is hosted at <a href="https://watch-shop-rjsm.onrender.com/"/>https://watch-shop-rjsm.onrender.com/</h2>
