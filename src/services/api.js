@@ -1,4 +1,4 @@
-const host = 'https://yellow-rattlesnake-tam.cyclic.app';
+const host = 'https://watch-shop-rest-api.onrender.com';
 
 async function request(method, url, data) {
     const options = {
